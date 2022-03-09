@@ -1,22 +1,23 @@
 <template>
   <div id="app">
+    
     <h2>This is a Vue 3 starter project</h2>
 
     <div class="nav">
       <router-link to="/">Vuex Store Page</router-link>
       <router-link to="/page2">Composition API Page</router-link>
     </div>
-
     <router-view></router-view>
   </div>
 </template>
 
 <script>
+
 import axios from "./core/axios";
 
 export default {
   name: "App",
-   
+  components: {},   
 }
 </script>
 

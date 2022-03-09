@@ -3,7 +3,7 @@ import axios from "./core/axios";
 const state = {
   storeCounter: 0,
   shows: [],
-  search: [],
+  search: {},
 };
 
 const mutations = {
@@ -19,15 +19,14 @@ const mutations = {
 };
 
 //to handle state
-const getters = {}
+/*const getters = {
+  getSearch(state) {
+    console.log('cc' , state.search);
+    return state.shows;
+  }
+}*/
 
 const actions = {
-    getPosts({ commit }) {
-        axios.get('/shows')
-            .then(response => {
-                commit('SET_POSTS', response.data)
-        })
-    },
     getShows({ commit }) {
         axios.get('/shows')
             .then(response => {
@@ -35,8 +34,9 @@ const actions = {
         })
     },
     getSearch({ commit }) {
-        axios.get('/singlesearch/shows?q=:query')
-            .then(response => {
+        axios.get('/singlesearch/shows?q=girls')
+          .then(response => {
+                console.log(response.data)
                 commit('SET_Search', response.data)
         })
     }
@@ -45,6 +45,5 @@ const actions = {
 export const store = {
   state,
   mutations,
-  actions,
-  getters
+  actions
 };
