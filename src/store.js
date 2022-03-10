@@ -3,41 +3,41 @@ import axios from "./core/axios";
 const state = {
   storeCounter: 0,
   shows: [],
-  search: {},
+  search: '',
+  keyword: 'girls',
 };
+
+//to handle state
+/*const getters = {
+  getShows(state) {
+    console.log(state.shows);
+    return state.shows;
+  }
+}*/
 
 const mutations = {
   incrementCounter(state) {
     state.storeCounter++;
   },
-  SET_SHOWS(state, shows) {
-      state.shows = shows
+  SET_SHOWS(state, data) {
+      return state.shows = data
   },
-  SET_Search(state, search) {
-      state.search = search
+  SET_Search(state, data) {
+      return state.search = data
   }
 };
 
-//to handle state
-/*const getters = {
-  getSearch(state) {
-    console.log('cc' , state.search);
-    return state.shows;
-  }
-}*/
-
 const actions = {
-    getShows({ commit }) {
+    getShowsActions({ commit }) {
         axios.get('/shows')
-            .then(response => {
+          .then(response => {
                 commit('SET_SHOWS', response.data)
         })
     },
     getSearch({ commit }) {
-        axios.get('/singlesearch/shows?q=girls')
+      axios.get('/search/shows?q='+this.keyword)
           .then(response => {
-                console.log(response.data)
-                commit('SET_Search', response.data)
+              commit('SET_Search', response.data)
         })
     }
 }
@@ -45,5 +45,6 @@ const actions = {
 export const store = {
   state,
   mutations,
-  actions
+  actions,
+  //getters
 };

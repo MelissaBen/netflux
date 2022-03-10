@@ -1,11 +1,11 @@
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
-        <h2>search</h2>
-
-
+  <div class="">
+        <div class="w-25 m-auto">
+            <b-form-input v-model="keyword" placeholder="Search"></b-form-input>
+        </div>
      <div v-for='search in search' :key='search'>
-      <h3>coucou: </h3>  {{search}}
+         <p>{{search.score}}</p>
+
     </div>
    
   </div>
@@ -13,19 +13,22 @@
 
 <script>
 
-import { mapActions } from 'vuex'
+import { mapActions } from 'vuex';
+import axios from 'axios';
+
 export default {
   name: 'myStore',
   data () {
     return {
-      msg: 'Welcome to my Vuex Store'
+      keyword: '',
     }
   },
+ watch: {
+  keyword: "getResults"
+},
   computed: {
     search() {
     return this.$store.state.search;
-        console.log(search)
-
     }
   },
   methods: {
