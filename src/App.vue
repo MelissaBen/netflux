@@ -12,7 +12,7 @@
                 <router-link class="nav-link active" to="/">Home</router-link>
               </li>
               <li class="nav-item">
-                <router-link class="nav-link " to="/movies">Movies</router-link>
+                <router-link class="nav-link " to="/shows">Shows</router-link>
               </li>
             </ul>
             <form class="d-flex">

@@ -9,7 +9,7 @@
               <h4 class="card-title">{{show.name}}</h4>
               <h5 class="card-title">{{show.genres}}</h5>
               <p class="card-text" v-html="show.summary"></p>
-              <a href="#" class="btn btn-primary">Link</a>
+              <a href="" @click.prevent="$router.push({ name: 'show_details', params: { id: show.id } })" class="btn btn-primary">Link</a>
             </div>
           </div>
       </div>
@@ -18,7 +18,6 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
 import Search from "../components/Search.vue";
 
 export default {
@@ -27,6 +26,7 @@ export default {
 
   data () {
     return {
+      
     }
   },
   computed: {
@@ -35,7 +35,7 @@ export default {
     },
   },
   methods: {
-    ...mapActions(['getShowsActions'])
+    
   },
   mounted() {
       this.$store.dispatch("getShowsActions")

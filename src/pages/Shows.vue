@@ -1,3 +1,3 @@
 <template>
-    <h1>Movies</h1>
+    <h1>Shows</h1>
 </template>

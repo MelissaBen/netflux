@@ -12,7 +12,7 @@
                 <router-link class="nav-link active" to="/">Home</router-link>
               </li>
               <li class="nav-item">
-                <router-link class="nav-link " to="/movies">Movies</router-link>
+                <router-link class="nav-link " to="/shows">Shows</router-link>
               </li>
             </ul>
             <form class="d-flex">
@@ -22,16 +22,13 @@
           </div>
         </div>
     </nav> 
-     <div v-for='search in result' :key='search'>
+    <div v-for='search in result' :key='search'>
          <p>{{search.show.name}}</p>
     </div>
   </div>
 </template>
 
 <script>
-
-import { mapActions } from 'vuex';
-import axios from 'axios';
 
 export default {
   name: 'myStore',
@@ -52,7 +49,6 @@ export default {
     
   },
   methods: {
-    ...mapActions(['getSearch']),
 
     search() {
       this.$store.dispatch("getSearch", this.keyword )
