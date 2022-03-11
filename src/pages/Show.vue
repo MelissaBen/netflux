@@ -6,6 +6,15 @@
       <p>{{ show }}</p>
     </div> 
 
+    <div>
+        <form @submit="submitComment">
+            <input v-model="form.username" name="username" placeholder="Username"> <br>
+            <textarea class="mt-2" v-model="form.content" name="content" placeholder="Content"></textarea> <br>
+            <button class="btn btn-outline-success" type="submit">Commenter</button>
+        </form>
+
+    </div>
+
     <h1>seasons :</h1>
 
     <div v-for='season in saisons' :key='season.id'>
@@ -29,7 +38,11 @@ export default {
 
   data () {
     return {
-    //   show: null,
+        form: {
+            username: '',
+            content: '',
+        },
+        id: null,
     //   saisons: null,
     //   episodes: null,
 
@@ -51,12 +64,18 @@ export default {
   },
   methods: {
     getshow() {
-        this.$store.dispatch("getSingleShow", this.$route.params.id)
-        this.$store.dispatch("getSingleShowSaisons", this.$route.params.id)
-        this.$store.dispatch("getSingleShowEpisodes", this.$route.params.id)
+        this.$store.dispatch("getSingleShow", this.id)
+        this.$store.dispatch("getSingleShowSaisons", this.id)
+        this.$store.dispatch("getSingleShowEpisodes", this.id)
     },
+    submitComment(e){
+        e.preventDefault();
+        console.log(this.form)
+        this.$store.dispatch("addComment", this.id, this.form)
+    }
   },
   mounted() {
+      this.id = this.$route.params.id
       this.getshow()
   }
 }

@@ -85,6 +85,17 @@ const actions = {
                 commit('SET_SINGLE_EPISODES', response.data)
             })
     },
+    addComment(id, form) {
+        axios.post('http://localhost:3000/comments', {
+                'show_id': id,
+                'username': form.username,
+                'content': form.content,
+            })
+            .then(response => {
+                console.log(response)
+            })
+    },
+
 
 }
 
