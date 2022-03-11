@@ -4,7 +4,6 @@ const state = {
   storeCounter: 0,
   shows: [],
   search: '',
-  keyword: 'girls',
 };
 
 //to handle state
@@ -34,9 +33,11 @@ const actions = {
                 commit('SET_SHOWS', response.data)
         })
     },
-    getSearch({ commit }) {
-      axios.get('/search/shows?q='+this.keyword)
-          .then(response => {
+  getSearch({ commit }, keyword) {
+      console.log(keyword)
+      axios.get('/search/shows?q='+keyword)
+        .then(response => {
+            console.log(response.data)
               commit('SET_Search', response.data)
         })
     }
