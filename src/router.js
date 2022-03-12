@@ -9,23 +9,27 @@ export const router = createRouter({
     routes: [{
             path: "/",
             name: "home",
+            meta: { layout: 'default' },
             component: Home,
         },
         {
             path: "/shows",
             name: "shows",
+            meta: { layout: 'default' },
             component: shows,
         },
 
         {
             path: "/shows/:id",
             name: "show_details",
+            meta: { layout: 'default' },
             component: show,
         },
 
         {
             path: "/episode/:id",
             name: "single_episode",
+            meta: { layout: 'default' },
             component: episode,
         },
     ],
