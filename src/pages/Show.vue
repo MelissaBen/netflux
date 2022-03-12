@@ -1,8 +1,73 @@
 <template>
   <div class="">
-    <Search/>
-    <h1>show :</h1>
+   <section class="position-relative gen-section-padding-3">
+   <div class="tv-single-background">
+            <img src="https://picsum.photos/60/60" alt="stream-lab-image">
+        </div>
+   <div class="container">
+    <div class="col-lg-12">
+  <div class="gen-tv-show-wrapper style-1">
+     <div class="gen-tv-show-top">
+     <div class="row">
+      <div class="col-lg-6">
+                                    <div class="gentech-tv-show-img-holder">
+                                        <img  class="show-img" src="https://picsum.photos/600/400" alt="stream-lab-image">
+                                    </div>
+                                </div>
+                                   <div class="col-lg-6 align-self-center">
+                                    <div class="gen-single-tv-show-info">
+                                        <h2 class="gen-title">Love In 21st</h2>
+                                        <div class="gen-single-meta-holder">
+                                            <ul>
+                                                <li>2 Seasons</li>
+                                                <li>9 Episodes</li>
+                                                <li>2015 to 2016</li>
+                                                <li>
+                                                    <a href="#"><span>Action</span></a>
+                                                </li>
+                                                <li>
+                                                    <i class="fas fa-eye">
+                                                    </i>
+                                                    <span>5.5K Views</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <p>Streamlab is a long established fact that a reader will be distracted by the
+                                            readable content of a page when Streamlab at its layout. The point of using
+                                            Lorem Streamlab is that it has a more-or-less normal distribution of
+                                            Streamlab
+                                            as opposed Streamlab.</p>
+                                        <div class="gen-socail-share mt-0">
+                                            <h4 class="align-self-center">Social Share :</h4>
+                                            <ul class="social-inner">
+                                                <li><a href="#" class="facebook"><i class="fab fa-facebook-f"></i></a>
+                                                </li>
+                                                <li><a href="#" class="facebook"><i class="fab fa-instagram"></i></a>
+                                                </li>
+                                                <li><a href="#" class="facebook"><i class="fab fa-twitter"></i></a></li>
+                                            </ul>
+                                        </div>
+
+                                    </div>
+                                </div>
+     </div>
+    </div>
+  </div>
+<div class="gen-season-holder">
+ <ul class="nav">
+  <li class="nav-item">
+  <a class="nav-link active show" data-toggle="tab" href="#season_0">Season 1</a></li>
+  <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#season_1">Season 2</a></li>
+  </ul>
+   <div class="tab-content"></div>
+</div>
+</div>
+</div>
+           
+   </section>
+   
     <div class="container m-5">
+     <h1>show :</h1>
       <p>{{ show }}</p>
     </div> 
 
@@ -86,4 +151,12 @@ export default {
   flex-direction: row;
   flex-wrap: wrap;
 }
+  .gentech-tv-show-img-holder {
+        margin: 0 0 30px;
+    }
+    .show-img{
+      height:auto;
+      max-width:100%;
+    }
+    
 </style>

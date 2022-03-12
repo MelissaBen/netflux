@@ -4891,6 +4891,7 @@ Movies Single
     border: none;
     float: left;
     display: inline-block;
+    overflow: hidden !important;
 }
 
 .gen-video-holder .wp-video .mejs-video,
@@ -4899,7 +4900,7 @@ Movies Single
     width: 100% !important;
     height: 100% !important;
     border: none;
-    overflow: hidden;
+    overflow: hidden !important;
     float: left;
     display: inline-block;
     margin-bottom: 20px;
