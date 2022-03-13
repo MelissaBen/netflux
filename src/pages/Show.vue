@@ -10,46 +10,46 @@
      <div class="gen-tv-show-top">
      <div class="row">
       <div class="col-lg-6">
-                                    <div class="gentech-tv-show-img-holder">
-                                        <img  class="show-img" src="https://picsum.photos/600/400" alt="stream-lab-image">
-                                    </div>
-                                </div>
-                                   <div class="col-lg-6 align-self-center">
-                                    <div class="gen-single-tv-show-info">
-                                        <h2 class="gen-title">Love In 21st</h2>
-                                        <div class="gen-single-meta-holder">
-                                            <ul>
-                                                <li>2 Seasons</li>
-                                                <li>9 Episodes</li>
-                                                <li>2015 to 2016</li>
-                                                <li>
-                                                    <a href="#"><span>Action</span></a>
-                                                </li>
-                                                <li>
-                                                    <i class="fas fa-eye">
-                                                    </i>
-                                                    <span>5.5K Views</span>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <p>Streamlab is a long established fact that a reader will be distracted by the
-                                            readable content of a page when Streamlab at its layout. The point of using
-                                            Lorem Streamlab is that it has a more-or-less normal distribution of
-                                            Streamlab
-                                            as opposed Streamlab.</p>
-                                        <div class="gen-socail-share mt-0">
-                                            <h4 class="align-self-center">Social Share :</h4>
-                                            <ul class="social-inner">
-                                                <li><a href="#" class="facebook"><i class="fab fa-facebook-f"></i></a>
-                                                </li>
-                                                <li><a href="#" class="facebook"><i class="fab fa-instagram"></i></a>
-                                                </li>
-                                                <li><a href="#" class="facebook"><i class="fab fa-twitter"></i></a></li>
-                                            </ul>
-                                        </div>
+            <div class="gentech-tv-show-img-holder">
+                <img  class="show-img" src="https://picsum.photos/600/400" alt="stream-lab-image">
+            </div>
+        </div>
+            <div class="col-lg-6 align-self-center">
+            <div class="gen-single-tv-show-info">
+                <h2 class="gen-title">Love In 21st</h2>
+                <div class="gen-single-meta-holder">
+                    <ul>
+                        <li>2 Seasons</li>
+                        <li>9 Episodes</li>
+                        <li>2015 to 2016</li>
+                        <li>
+                            <a href="#"><span>Action</span></a>
+                        </li>
+                        <li>
+                            <i class="fas fa-eye">
+                            </i>
+                            <span>5.5K Views</span>
+                        </li>
+                    </ul>
+                </div>
+                <p>Streamlab is a long established fact that a reader will be distracted by the
+                    readable content of a page when Streamlab at its layout. The point of using
+                    Lorem Streamlab is that it has a more-or-less normal distribution of
+                    Streamlab
+                    as opposed Streamlab.</p>
+                <div class="gen-socail-share mt-0">
+                    <h4 class="align-self-center">Social Share :</h4>
+                    <ul class="social-inner">
+                        <li><a href="#" class="facebook"><i class="fab fa-facebook-f"></i></a>
+                        </li>
+                        <li><a href="#" class="facebook"><i class="fab fa-instagram"></i></a>
+                        </li>
+                        <li><a href="#" class="facebook"><i class="fab fa-twitter"></i></a></li>
+                    </ul>
+                </div>
 
-                                    </div>
-                                </div>
+            </div>
+        </div>
      </div>
     </div>
   </div>

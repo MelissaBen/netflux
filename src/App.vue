@@ -23,9 +23,8 @@ export default {
 </script>
 
 <style lang="postcss" scoped>
-
+ 
 #app {
-  background-color: black;
-}
+   }
 
 </style>
