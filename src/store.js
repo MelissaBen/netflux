@@ -8,6 +8,7 @@ const state = {
     episodes: null,
     saisons: null,
     episode: null,
+    comments: null,
 };
 
 //to handle state
@@ -40,6 +41,9 @@ const mutations = {
     },
     SET_Search(state, data) {
         return state.search = data
+    },
+    SET_SHOW_COMMENTS(state, data) {
+        return state.comments = data
     }
 };
 
@@ -85,12 +89,15 @@ const actions = {
                 commit('SET_SINGLE_EPISODES', response.data)
             })
     },
-    addComment(id, form) {
-        axios.post('http://localhost:3000/comments', {
-                'show_id': id,
-                'username': form.username,
-                'content': form.content,
+    getSingleShowComments({ commit }, showId) {
+        axios.get('http://localhost:4000/comments?showId=' + showId)
+            .then(response => {
+                commit('SET_SHOW_COMMENTS', response.data)
             })
+    },
+    addComment(id, form) {
+        console.log(form)
+        axios.post('http://localhost:4000/comments', form)
             .then(response => {
                 console.log(response)
             })
