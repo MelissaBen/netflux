@@ -8,7 +8,6 @@
 
 <script>
 
-import axios from "./core/axios";
 const default_layout = "default";
 
 export default {

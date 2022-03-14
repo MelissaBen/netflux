@@ -1,5 +1,52 @@
 <template>
   <div>
+      <div v-if="searches" class="container">
+         <div class="row">
+            <div class="col-lg-12">
+               <div class="gen-style-1">
+                     <div class="row pt-5">
+                        <div class="col-xl-3 col-lg-4 col-md-6"  v-for='search in searches' :key='search.show.id'>
+                           <div class="gen-carousel-movies-style-1 movie-grid style-1">
+                                 <div class="gen-movie-contain">
+                                    <div class="gen-movie-img">
+                                       <img :src="search.show.image.original" alt="streamlab-image">
+                                       <div class="gen-movie-add">
+                                             <div class="wpulike wpulike-heart">
+                                                <div class="wp_ulike_general_class wp_ulike_is_not_liked">
+                                                   <button type="button" class="wp_ulike_btn wp_ulike_put_image"></button>
+                                                </div>
+                                             </div>
+                                             <div class="movie-actions--link_add-to-playlist dropdown">
+                                                <a class="dropdown-toggle" href="#" data-toggle="dropdown">
+                                                   <i class="fa fa-plus"></i></a>
+                                             </div>
+                                       </div>
+                                       <div class="gen-movie-action">
+                                             <a  href="" @click.prevent="$router.push({ name: 'show_details', params: { id: search.show.id } })" class="gen-button">
+                                                <i class="fa fa-play"></i>
+                                             </a>
+                                       </div>
+                                    </div>
+                                    <div class="gen-info-contain">
+                                       <div class="gen-movie-info">
+                                             <h3><a href="" @click.prevent="$router.push({ name: 'show_details', params: { id: search.show.id } })" >{{search.show.name}}</a></h3>
+                                       </div>
+                                       <div class="gen-movie-meta-holder">
+                                             <ul>
+                                                <li>
+                                                   <a href=""><span>{{search.show.genres}}</span></a>
+                                                </li>
+                                             </ul>
+                                       </div>
+                                    </div>
+                                 </div>
+                           </div>
+                        </div>
+                     </div>
+               </div>
+            </div> 
+         </div>
+      </div>
     <div class="container">
       <div class="gen-section-caroussel">
           <div class="row">
@@ -9,7 +56,7 @@
             <div class="col-xl-6 col-lg-6 col-md-6 d-none d-md-inline-block">
                 <div class="gen-movie-action">
                   <div class="gen-btn-container text-right">
-                      <a href="tv-shows-pagination.html" class="gen-button gen-button-flat">
+                      <a href="#" class="gen-button gen-button-flat">
                         <span class="text">More Videos</span>
                       </a>
                   </div>
@@ -34,7 +81,7 @@
                               </div>
                           </div>
                           <div class="gen-movie-action">
-                              <a href="single-movie.html" class="gen-button">
+                              <a href="" @click.prevent="$router.push({ name: 'show_details', params: { id: show.id } })" class="gen-button">
                                 <i class="fa fa-play"></i>
                               </a>
                           </div>
@@ -69,7 +116,7 @@
             <div class="col-xl-6 col-lg-6 col-md-6 d-none d-md-inline-block">
                 <div class="gen-movie-action">
                   <div class="gen-btn-container text-right">
-                      <a href="tv-shows-pagination.html" class="gen-button gen-button-flat">
+                      <a href="#" class="gen-button gen-button-flat">
                         <span class="text">More Videos</span>
                       </a>
                   </div>
@@ -129,7 +176,7 @@
             <div class="col-xl-6 col-lg-6 col-md-6 d-none d-md-inline-block">
                 <div class="gen-movie-action">
                   <div class="gen-btn-container text-right">
-                      <a href="tv-shows-pagination.html" class="gen-button gen-button-flat">
+                      <a href="#" class="gen-button gen-button-flat">
                         <span class="text">More Videos</span>
                       </a>
                   </div>
@@ -154,14 +201,15 @@
                               </div>
                           </div>
                           <div class="gen-movie-action">
-                              <a href="single-movie.html" class="gen-button">
+                              <a href="" @click="$router.push({ name: 'show_details', params: { id: show.id } })" class="gen-button">
                                 <i class="fa fa-play"></i>
                               </a>
                           </div>
                         </div>
                         <div class="gen-info-contain">
                           <div class="gen-movie-info">
-                              <h3><a href="" @click.prevent="$router.push({ name: 'show_details', params: { id: show.id } })" >{{show.name}}</a>
+                              <h3>
+                                 <a href="" @click="$router.push({ name: 'show_details', params: { id: show.id } })" >{{show.name}}</a>
                               </h3>
                           </div>
                           <div class="gen-movie-meta-holder">
@@ -204,6 +252,9 @@ export default {
     }
   },
   computed: {
+   searches() {
+      return this.$store.state.search;
+   },
     shows() {
       return this.$store.state.shows;
     },
@@ -220,6 +271,10 @@ export default {
 
   .gen-section-caroussel{
       padding: 20px 80px;
+  }
+
+  .carousel__prev, .carousel__next {
+      background-color: #e50916 !important;
   }
 
   .carousel {
