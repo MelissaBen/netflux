@@ -1,145 +1,207 @@
 <template>
-  <div class="">
-      <section class="pt-0 pb-0">
-      <div class="container-fluid px-0">
-         <div class="row no-gutters">
-            <div class="col-12">
-               <div class="gen-banner-movies banner-style-2">
-                  <div class="owl-carousel owl-loaded owl-drag" data-dots="false" data-nav="true" data-desk_num="1"
-                     data-lap_num="1" data-tab_num="1" data-mob_num="1" data-mob_sm="1" data-autoplay="true"
-                     data-loop="true" data-margin="0">
-                     <div class="item" style="background: url('https://picsum.photos/1920/1080')">
-                        <div class="gen-movie-contain-style-2 h-100">
-                           <div class="container h-100">
-                              <div class="row flex-row-reverse align-items-center h-100">
-                                 <div class="col-xl-6">
-                                    <div class="gen-front-image">
-                                       <img src="https://picsum.photos/1920/1080" alt="owl-carousel-banner-image">
-                                       <a href="https://www.youtube.com/watch?v=LXb3EKWsInQ" class="playBut popup-youtube popup-vimeo popup-gmaps">
-                                          <!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In  -->
-                                          <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="213.7px"
-                                             height="213.7px" viewBox="0 0 213.7 213.7"
-                                             enable-background="new 0 0 213.7 213.7" xml:space="preserve">
-                                             <polygon class="triangle" id="XMLID_17_" fill="none" stroke-width="7"
-                                                stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"
-                                                points="
-                                                            73.5,62.5 148.5,105.8 73.5,149.1 "></polygon>
-                                             <circle class="circle" id="XMLID_18_" fill="none" stroke-width="7"
-                                                stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"
-                                                cx="106.8" cy="106.8" r="103.3">
-                                             </circle>
-                                          </svg>
-                                          <span>Watch Trailer</span>
-                                       </a>
-                                    </div>
-                                 </div>
-                                 <div class="col-xl-6">
-                                    <div class="gen-tag-line"><span>Most Viewed</span></div>
-                                    <div class="gen-movie-info">
-                                       <h3>King of Skull</h3>
-                                    </div>
-                                    <div class="gen-movie-meta-holder">
-                                       <ul class="gen-meta-after-title">
-                                          <li class="gen-sen-rating">
-                                             <span>12A</span>
-                                          </li>
-                                          <li> <img src="https://picsum.photos/60/60" alt="rating-image">
-                                             <span>
-                                                0 </span>
-                                          </li>
-                                       </ul>
-                                       <p>Streamlab is a long established fact that a reader will be distracted
-                                          by the readable content of a page The point of using Lorem Streamlab.
-                                       </p>
-                                       <div class="gen-meta-info">
-                                          <ul class="gen-meta-after-excerpt">
-                                             <li>
-                                                <strong>Cast :</strong>
-                                                Anna Romanson,Robert Romanson
-                                             </li>
-                                             <li>
-                                                <strong>Genre :</strong>
-                                                <span>
-                                                   <a href="action.html">
-                                                      Action, </a>
-                                                </span>
-                                                <span>
-                                                   <a href="animation.html">
-                                                      Annimation, </a>
-                                                </span>
-                                                <span>
-                                                   <a href="#">
-                                                      Family </a>
-                                                </span>
-                                             </li>
-                                             <li>
-                                                <strong>Tag :</strong>
-                                                <span>
-                                                   <a href="#">
-                                                      4K Ultra, </a>
-                                                </span>
-                                                <span>
-                                                   <a href="#">
-                                                      Brother, </a>
-                                                </span>
-                                                <span>
-                                                   <a href="#">
-                                                      Dubbing, </a>
-                                                </span>
-                                                <span>
-                                                   <a href="#">
-                                                      Premieres </a>
-                                                </span>
-                                             </li>
-                                          </ul>
-                                       </div>
-                                    </div>
-                                    <div class="gen-movie-action">
-                                       <div class="gen-btn-container">
-                                          <a href="single-movie.html" class="gen-button .gen-button-dark">
-                                             <i aria-hidden="true" class="fas fa-play"></i> <span class="text">Play
-                                                Now</span>
-                                          </a>
-                                       </div>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-               </div>
+  <div>
+    <Hero/>
+    <div class="container">
+      <div class="gen-section-caroussel">
+          <div class="row">
+            <div class="col-xl-6 col-lg-6 col-md-6">
+                <h4 class="gen-heading-title">All</h4>
             </div>
-         </div>
-      </div>
-   </section>
-   
-    <div class="container m-5">
-      <div v-for='show in shows' :key='show.name'>
-          <div class="card d-flex mx-2" style="width: 18rem;">
-            <img :src="show.image.original" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h4 class="card-title">{{show.name}}</h4>
-              <h5 class="card-title">{{show.genres}}</h5>
-              <p class="card-text" v-html="show.summary"></p>
-              <a href="" @click.prevent="$router.push({ name: 'show_details', params: { id: show.id } })" class="btn btn-primary">Link</a>
+            <div class="col-xl-6 col-lg-6 col-md-6 d-none d-md-inline-block">
+                <div class="gen-movie-action">
+                  <div class="gen-btn-container text-right">
+                      <a href="tv-shows-pagination.html" class="gen-button gen-button-flat">
+                        <span class="text">More Videos</span>
+                      </a>
+                  </div>
+                </div>
             </div>
           </div>
       </div>
-    </div> 
+      <carousel :items-to-show="1.5" class="caroussel-Container">
+        <slide v-for='show in shows' :key='show.name'>
+            <div class="carousel__item" > 
+                <div class="gen-carousel-movies-style-2 movie-grid style-2">
+                    <div class="gen-movie-contain">
+                        <div class="gen-movie-img"  >
+                          <div class="img-caroussel">
+                          <img :src="show.image.original" alt="owl-carousel-video-image">
+                          </div>
+                          <div class="gen-movie-add">
+                              <div class="wpulike wpulike-heart">
+                                <div class="wp_ulike_general_class wp_ulike_is_not_liked">
+                                  <button type="button" class="wp_ulike_btn wp_ulike_put_image"></button>
+                                </div>
+                              </div>
+                          </div>
+                          <div class="gen-movie-action">
+                              <a href="single-movie.html" class="gen-button">
+                                <i class="fa fa-play"></i>
+                              </a>
+                          </div>
+                        </div>
+                        <div class="gen-info-contain">
+                          <div class="gen-movie-info">
+                              <h3><a href="" @click.prevent="$router.push({ name: 'show_details', params: { id: show.id } })" >{{show.name}}</a>
+                              </h3>
+                          </div>
+                          <div class="gen-movie-meta-holder">
+                              <ul>
+                                <li>2hr 00mins</li>
+                                <li>
+                                    <a href="action.html"><span>{{show.genres}}</span></a>
+                                </li>
+                              </ul>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+              </div>
+        </slide>
+        <template #addons>
+          <navigation />
+        </template>
+      </carousel>
+      <div class="gen-section-caroussel">
+          <div class="row">
+            <div class="col-xl-6 col-lg-6 col-md-6">
+                <h4 class="gen-heading-title">Horror</h4>
+            </div>
+            <div class="col-xl-6 col-lg-6 col-md-6 d-none d-md-inline-block">
+                <div class="gen-movie-action">
+                  <div class="gen-btn-container text-right">
+                      <a href="tv-shows-pagination.html" class="gen-button gen-button-flat">
+                        <span class="text">More Videos</span>
+                      </a>
+                  </div>
+                </div>
+            </div>
+          </div>
+      </div>
+      <carousel :items-to-show="1.5" class="caroussel-Container">
+        <slide v-for='show in shows' :key='show.name'>
+            <div class="carousel__item" > 
+                <div class="gen-carousel-movies-style-2 movie-grid style-2">
+                    <div class="gen-movie-contain">
+                        <div class="gen-movie-img"  >
+                          <div class="img-caroussel">
+                          <img :src="show.image.original" alt="owl-carousel-video-image">
+                          </div>
+                          <div class="gen-movie-add">
+                              <div class="wpulike wpulike-heart">
+                                <div class="wp_ulike_general_class wp_ulike_is_not_liked">
+                                  <button type="button" class="wp_ulike_btn wp_ulike_put_image"></button>
+                                </div>
+                              </div>
+                          </div>
+                          <div class="gen-movie-action">
+                              <a href="single-movie.html" class="gen-button">
+                                <i class="fa fa-play"></i>
+                              </a>
+                          </div>
+                        </div>
+                        <div class="gen-info-contain">
+                          <div class="gen-movie-info">
+                              <h3><a href="" @click.prevent="$router.push({ name: 'show_details', params: { id: show.id } })" >{{show.name}}</a>
+                              </h3>
+                          </div>
+                          <div class="gen-movie-meta-holder">
+                              <ul>
+                                <li>2hr 00mins</li>
+                                <li>
+                                    <a href="action.html"><span>{{show.genres}}</span></a>
+                                </li>
+                              </ul>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+              </div>
+        </slide>
+        <template #addons>
+          <navigation />
+        </template>
+      </carousel> 
+      <div class="gen-section-caroussel">
+          <div class="row">
+            <div class="col-xl-6 col-lg-6 col-md-6">
+                <h4 class="gen-heading-title">Action</h4>
+            </div>
+            <div class="col-xl-6 col-lg-6 col-md-6 d-none d-md-inline-block">
+                <div class="gen-movie-action">
+                  <div class="gen-btn-container text-right">
+                      <a href="tv-shows-pagination.html" class="gen-button gen-button-flat">
+                        <span class="text">More Videos</span>
+                      </a>
+                  </div>
+                </div>
+            </div>
+          </div>
+      </div>
+      <carousel :items-to-show="1.5" class="caroussel-Container">
+        <slide v-for='show in shows' :key='show.name'>
+            <div class="carousel__item" > 
+                <div class="gen-carousel-movies-style-2 movie-grid style-2">
+                    <div class="gen-movie-contain">
+                        <div class="gen-movie-img"  >
+                          <div class="img-caroussel">
+                          <img :src="show.image.original" alt="owl-carousel-video-image">
+                          </div>
+                          <div class="gen-movie-add">
+                              <div class="wpulike wpulike-heart">
+                                <div class="wp_ulike_general_class wp_ulike_is_not_liked">
+                                  <button type="button" class="wp_ulike_btn wp_ulike_put_image"></button>
+                                </div>
+                              </div>
+                          </div>
+                          <div class="gen-movie-action">
+                              <a href="single-movie.html" class="gen-button">
+                                <i class="fa fa-play"></i>
+                              </a>
+                          </div>
+                        </div>
+                        <div class="gen-info-contain">
+                          <div class="gen-movie-info">
+                              <h3><a href="" @click.prevent="$router.push({ name: 'show_details', params: { id: show.id } })" >{{show.name}}</a>
+                              </h3>
+                          </div>
+                          <div class="gen-movie-meta-holder">
+                              <ul>
+                                <li>2hr 00mins</li>
+                                <li>
+                                    <a href="action.html"><span>{{show.genres}}</span></a>
+                                </li>
+                              </ul>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+              </div>
+        </slide>
+        <template #addons>
+          <navigation />
+        </template>
+      </carousel> 
+    </div>
   </div>
 </template>
 
 <script>
 import Search from "../components/Search.vue";
+import Hero from "../components/Hero.vue";
+import 'vue3-carousel/dist/carousel.css';
+import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel';
 
 export default {
   name: 'myStore',
-  components: { Search },   
+  components: { Search , Hero,  Carousel,
+    Slide,
+    Pagination,
+    Navigation, },   
 
   data () {
     return {
-      
+
     }
   },
   computed: {
@@ -151,14 +213,36 @@ export default {
     
   },
   mounted() {
-      this.$store.dispatch("getShowsActions")
+      this.$store.dispatch("getShowsActions");
   }
 }
 </script>
 <style scoped>
 .container {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  padding-top:150px
 }
+.gen-section-caroussel{
+    padding: 20px 80px;
+}
+
+.carousel {
+  padding: 15px 0;
+}
+.carousel__slide {
+ 
+  width: 30% !important;
+}
+
+.img-caroussel {
+  width: 400px;
+  height: 400px;
+
+}
+
+@media (max-width: 700px) { 
+  .carousel__slide {
+    width: 100% !important ;
+}
+}
+
 </style>

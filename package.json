@@ -22,6 +22,7 @@
     "vite": "2.7.13",
     "vue": "3.2.27",
     "vue-router": "4.0.12",
+    "vue3-carousel": "0.1.36",
     "vuex": "4.0.2"
   },
   "devDependencies": {
