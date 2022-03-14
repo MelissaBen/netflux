@@ -123,7 +123,7 @@
                                 <a
                                   class="ep-season"
                                   href=""
-                                  @click.prevent="
+                                  @click="
                                     $router.push({
                                       name: 'single_episode',
                                       params: { id: ep.id },
