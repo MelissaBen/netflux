@@ -7,7 +7,7 @@
                     <div class="col-lg-12">
                         <nav class="navbar navbar-expand-lg navbar-light">
                             <a class="navbar-brand" @click.prevent="$router.push('/')">
-                                <img class="img-fluid logo" src="src/images/logo-1.png" alt="streamlab-image">
+                                <img class="img-fluid logo" src="src/images/Netflux.png" alt="streamlab-image">
                             </a>
                             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                                 <div id="gen-menu-contain" class="gen-menu-contain">
@@ -106,6 +106,9 @@
 <style scoped>
     .gen-movie-img img {
          width:300px !important
+    }
+    .search {
+        padding-top: 60px ;
     }
 
 </style>

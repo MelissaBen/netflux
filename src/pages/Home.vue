@@ -234,14 +234,13 @@
 </template>
 
 <script>
-import Search from "../components/Search.vue";
 import Hero from "../components/Hero.vue";
 import 'vue3-carousel/dist/carousel.css';
 import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel';
 
 export default {
   name: 'myStore',
-  components: { Search , Hero,  Carousel,
+  components: { Hero,  Carousel,
     Slide,
     Pagination,
     Navigation, },   
