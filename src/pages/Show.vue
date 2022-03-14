@@ -50,70 +50,90 @@
           </div>
           <div class="gen-season-holder">
             <ul class="nav">
-              <li v-for="season in saisons" :key="season.id" class="nav-item">
+              <li
+                v-for="(season, key) in saisons"
+                :key="key"
+                :class="{ active: key == 1 }"
+                class="nav-item"
+              >
                 <a
                   v-if="season"
-                  class="nav-link"
+                  class="nav-link show"
                   data-toggle="tab"
-                  :href="'#season_' + season.number"
-                  >Season{{ season.number }}</a
+                  :href="'#season_' + key"
+                  >Season{{ key }}</a
                 >
               </li>
+              <p />
             </ul>
             <div class="tab-content">
               <div
-                v-for="ep in episodes"
-                :key="ep.id"
-                :id="'season_' + ep.season"
-                class="tab-pane epi-season"
+                v-for="(season, key) in saisons"
+                :key="key"
+                :id="'season_' + key"
+                :class="{ active: key == 1 }"
+                class="tab-pane show"
               >
-                <div
-                  class="owl-carousel owl-loaded owl-drag"
-                  data-dots="false"
-                  data-nav="true"
-                  data-desk_num="4"
-                  data-lap_num="3"
-                  data-tab_num="2"
-                  data-mob_num="1"
-                  data-mob_sm="1"
-                  data-autoplay="false"
-                  data-loop="false"
-                  data-margin="30"
-                >
-                  <div class="item all-ep">
-                    <div
-                      v-if="ep.season == 1"
-                      class="gen-episode-contain episodee"
-                    >
-                      <div class="gen-episode-img">
-                        <img
-                          :src="ep.image.medium"
-                          class="img-ep"
-                          alt="stream-lab-image"
-                        />
-                        <div class="gen-movie-action">
-                          <a href="tv-shows-home.html" class="gen-button">
-                            <i class="fa fa-play"></i>
-                          </a>
-                        </div>
-                      </div>
-                      <div class="gen-info-contain">
-                        <div class="gen-episode-info">
-                          <h3>
-                            {{ ep.name }} <span>-</span>
-                            <a href="#">
-                              Episode: {{ ep.number }} season {{ ep.season }}
+                <div v-for="ep in season" :key="ep.id" class="epi-season">
+                  <div
+                    class="owl-carousel owl-loaded owl-drag"
+                    data-dots="false"
+                    data-nav="true"
+                    data-desk_num="4"
+                    data-lap_num="3"
+                    data-tab_num="2"
+                    data-mob_num="1"
+                    data-mob_sm="1"
+                    data-autoplay="false"
+                    data-loop="false"
+                    data-margin="30"
+                  >
+                    <div class="item all-ep">
+                      <div
+                        v-if="ep.season == key"
+                        class="gen-episode-contain episodee"
+                      >
+                        <div class="gen-episode-img">
+                          <img
+                            :src="ep.image.medium"
+                            class="img-ep"
+                            alt="stream-lab-image"
+                          />
+                          <div class="gen-movie-action">
+                            <a href="tv-shows-home.html" class="gen-button">
+                              <i class="fa fa-play"></i>
                             </a>
-                          </h3>
+                          </div>
                         </div>
-                        <div class="gen-single-meta-holder">
-                          <ul>
-                            <li class="run-time">{{ ep.runtime }}min</li>
+                        <div class="gen-info-contain">
+                          <div class="gen-episode-info">
+                            <h3>
+                              {{ ep.name }} <span>-</span>
+                              <a href="#">
+                                Episode: {{ ep.number }} season
+                                {{ ep.season }}
+                              </a>
+                            </h3>
+                          </div>
+                          <div class="gen-single-meta-holder">
+                            <ul>
+                              <li class="run-time">{{ ep.runtime }}min</li>
 
-                            <li class="release-date">
-                              {{ ep.airdate }}
-                            </li>
-                          </ul>
+                              <li class="release-date">
+                                <a
+                                  class="ep-season"
+                                  href=""
+                                  @click.prevent="
+                                    $router.push({
+                                      name: 'single_episode',
+                                      params: { id: ep.id },
+                                    })
+                                  "
+                                  >Details</a
+                                >
+                              </li>
+                            </ul>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -125,37 +145,55 @@
         </div>
       </div>
     </section>
-    <!-- <div>
+    <div class="m-auto">
       <form @submit="submitComment">
-        <input v-model="form.username" name="username" placeholder="Username" />
-        <br />
-        <textarea
-          class="mt-2"
-          v-model="form.content"
-          name="content"
-          placeholder="Content"
-        ></textarea>
-        <br />
-        <button class="btn btn-outline-success" type="submit">Commenter</button>
+        <div class="row gt-form">
+          <div class="col-md-9 mb-4">
+            <input
+              type="text"
+              v-model="form.username"
+              name="username"
+              placeholder="Username"
+            />
+          </div>
+          <div class="col-md-9 mb-4">
+            <textarea
+              v-model="form.content"
+              name="content"
+              placeholder="Content"
+            ></textarea>
+          </div>
+          <div class="col-md-9 mb-4">
+            <button class="btn btn-outline-success" type="submit">
+              Commenter
+            </button>
+          </div>
+        </div>
       </form>
-    </div> -->
-    <h1>episodes :</h1>
-    <div v-for="ep in episodes" :key="ep.id">
-      <p>{{ ep }}</p>
-      <a
-        href=""
-        @click.prevent="
-          $router.push({ name: 'single_episode', params: { id: ep.id } })
-        "
-        class="btn btn-primary"
-        >Details</a
-      >
+    </div>
+    <div class="widget widget_recent_comments">
+      <h2 class="widget-title">Commentaires :</h2>
+      <ul id="recentcomments">
+        <li
+          class="recentcomments"
+          v-for="comment in comments"
+          :key="comment.id"
+        >
+          <span class="comment-author-link">
+            <a href="#" rel="external nofollow ugc" class="url pl-0"
+              >{{ comment.username }} :
+            </a>
+          </span>
+          <a href="#" class="pl-0">{{ comment.content }}</a>
+        </li>
+      </ul>
     </div>
   </div>
 </template>
 
 <script>
 import Search from "../components/Search.vue";
+import _ from "lodash";
 
 export default {
   name: "Show",
@@ -166,10 +204,10 @@ export default {
       form: {
         username: "",
         content: "",
+        showId: null,
       },
       id: null,
-      //   saisons: null,
-      //   episodes: null,
+      comments: null,
     };
   },
   computed: {
@@ -178,11 +216,14 @@ export default {
     },
 
     saisons() {
-      return this.$store.state.saisons;
+      return _.groupBy(this.$store.state.episodes, "season");
     },
 
     episodes() {
       return this.$store.state.episodes;
+    },
+    comments() {
+      return this.$store.state.comments;
     },
   },
   methods: {
@@ -190,15 +231,27 @@ export default {
       this.$store.dispatch("getSingleShow", this.id);
       this.$store.dispatch("getSingleShowSaisons", this.id);
       this.$store.dispatch("getSingleShowEpisodes", this.id);
+      this.$store.dispatch("getSingleShowComments", this.id);
+      console.log("episodes =>", this.$store.state.saisons);
     },
     submitComment(e) {
       e.preventDefault();
-      console.log(this.form);
-      console.log(this.saisons);
-      this.$store.dispatch("addComment", this.id, this.form);
+      this.form.showId = this.id;
+
+      this.$store
+        .dispatch("addComment", this.form)
+        .then((resp) => {
+          this.comments = this.$store.state.comments;
+          this.form.username = "";
+          this.form.content = "";
+        })
+        .catch((err) => {
+          console.log(err.response);
+        });
     },
   },
   mounted() {
+    this.comments = this.$store.state.comments;
     this.id = this.$route.params.id;
     this.getshow();
   },
@@ -224,9 +277,12 @@ export default {
 }
 .all-ep {
   display: inline-table;
-  margin: 20px;
+  margin: 40px;
 }
 .epi-season {
   display: inline-table !important;
+}
+.ep-season {
+  color: white;
 }
 </style>
