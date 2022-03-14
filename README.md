@@ -12,6 +12,9 @@ npm run dev
 # yarn
 yarn
 yarn dev
+
+# json server
+json-server -p 4000 db.json
 ```
 
 This will start a Vite server on local that you can play with.
