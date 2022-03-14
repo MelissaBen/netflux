@@ -130,9 +130,6 @@ export default {
       this.search()
     } 
   },
-  computed: {
-    
-  },
   methods: {
 
     search() {
