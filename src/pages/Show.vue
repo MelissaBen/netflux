@@ -221,9 +221,9 @@ export default {
     episodes() {
       return this.$store.state.episodes;
     },
-    comments() {
-      return this.$store.state.comments;
-    },
+    // comments() {
+    //   return this.$store.state.comments;
+    // },
   },
   methods: {
     getshow() {
@@ -232,25 +232,21 @@ export default {
       this.$store.dispatch("getSingleShowEpisodes", this.id);
       this.$store.dispatch("getSingleShowComments", this.id);
       console.log("episodes =>", this.$store.state.saisons);
+      this.comments = this.$store.state.comments;
     },
     submitComment(e) {
       e.preventDefault();
       this.form.showId = this.id;
 
-      this.$store
-        .dispatch("addComment", this.form)
-        .then((resp) => {
-          this.comments = this.$store.state.comments;
-          this.form.username = "";
-          this.form.content = "";
-        })
-        .catch((err) => {
-          console.log(err.response);
-        });
+      this.$store.dispatch("addComment", this.form)
+
+      this.comments = [...this.comments, this.$store.state.comments];
+      this.form.username = "";
+      this.form.content = "";
+
     },
   },
   mounted() {
-    this.comments = this.$store.state.comments;
     this.id = this.$route.params.id;
     this.getshow();
   },
