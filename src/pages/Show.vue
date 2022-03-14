@@ -192,12 +192,11 @@
 </template>
 
 <script>
-import Search from "../components/Search.vue";
 import _ from "lodash";
 
 export default {
   name: "Show",
-  components: { Search },
+  components: { },
 
   data() {
     return {

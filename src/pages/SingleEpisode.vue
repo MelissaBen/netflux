@@ -1,5 +1,5 @@
 <template>
-  <section class="gen-section-padding-3">
+  <div class="gen-section-padding-2">
     <div class="container">
       <div class="row">
         <div class="col-lg-12">
@@ -105,16 +105,14 @@
         </div>
       </div>
     </div>
-  </section>
-  <div></div>
+  </div>
 </template>
 
 <script>
-import Search from "../components/Search.vue";
 
 export default {
   name: "SingleEpisode",
-  components: { Search },
+  components: { },
 
   computed: {
     episode() {
