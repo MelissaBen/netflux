@@ -79,6 +79,7 @@ const actions = {
     getSingleShowEpisodes({ commit }, id) {
         axios.get('/shows/' + id + '/episodes')
             .then(response => {
+                console.log('episodes =>', response.data)
                 commit('SET_SHOW_EPISODES', response.data)
             })
     },

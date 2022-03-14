@@ -1,9 +1,9 @@
 <template>
   <div class="">
    <section class="position-relative gen-section-padding-3">
-   <div class="tv-single-background">
+   <!-- <div class="tv-single-background">
       <img src="https://picsum.photos/60/60" alt="stream-lab-image">
-    </div>
+    </div> -->
     <div class="container">
       <div class="col-lg-12">
         <div class="gen-tv-show-wrapper style-1">
@@ -66,11 +66,7 @@
            
   </section>
 
-    <h1>seasons :</h1>
-
-    <div v-for='season in saisons' :key='season.id'>
-         <p>{{season.name}}</p>
-    </div>
+    
 
     <h1>episodes :</h1>
     <div v-for='ep in episodes' :key='ep.id'>
@@ -110,11 +106,16 @@
         </li>
       </ul>
     </div>
+    <h1>seasons :</h1>
+    <div v-for='(season, key) in saisons' :key='key'>
+         <p>{{key}}</p>
+    </div>
   </div>
 </template>
 
 <script>
 import Search from "../components/Search.vue";
+import _ from 'lodash';
 
 export default {
   name: 'Show',
@@ -137,7 +138,7 @@ export default {
     },
 
     saisons() {
-      return this.$store.state.saisons;
+      return _.groupBy(this.$store.state.episodes, 'season') 
     },
 
     episodes() {
@@ -153,6 +154,7 @@ export default {
         this.$store.dispatch("getSingleShowSaisons", this.id)
         this.$store.dispatch("getSingleShowEpisodes", this.id)
         this.$store.dispatch("getSingleShowComments", this.id)
+        console.log('episodes =>', this.$store.state.episodes)
     },
     submitComment(e){
         e.preventDefault();
