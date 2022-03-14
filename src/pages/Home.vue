@@ -1,6 +1,5 @@
 <template>
   <div>
-    <Hero/>
     <div class="container">
       <div class="gen-section-caroussel">
           <div class="row">
@@ -218,24 +217,22 @@ export default {
 }
 </script>
 <style scoped>
-.container {
-  padding-top:150px
-}
-.gen-section-caroussel{
-    padding: 20px 80px;
-}
 
-.carousel {
-  padding: 15px 0;
-}
-.carousel__slide {
- 
-  width: 30% !important;
-}
+  .gen-section-caroussel{
+      padding: 20px 80px;
+  }
 
-.img-caroussel {
-  width: 400px;
-  height: 400px;
+  .carousel {
+    padding: 15px 0;
+  }
+  .carousel__slide {
+  
+    width: 30% !important;
+  }
+
+  .img-caroussel {
+    width: 400px;
+    height: 400px;
 
 }
 

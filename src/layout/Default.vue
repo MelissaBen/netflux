@@ -79,7 +79,7 @@
                                     <form role="search" method="get" class="search-form" action="#">
                                         <label>
                                             <span class="screen-reader-text"></span>
-                                            <input type="search" class="search-field" placeholder="Search …" value="" name="s">
+                                            <input  class="search-field" v-model="keyword" type="search" placeholder="Search" aria-label="Search">
                                         </label>
                                         <button type="submit" class="search-submit"><span
                                             class="screen-reader-text"></span></button>
@@ -98,9 +98,97 @@
                 </div>
             </div>
         </header>
-        <slot />
+           <!-- Search shows -->
+        <section class="gen-section-padding-3">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="gen-style-1">
+                            <div class="row pt-5">
+                                <div class="col-xl-3 col-lg-4 col-md-6"  v-for='search in result' :key='search'>
+                                    <div class="gen-carousel-movies-style-1 movie-grid style-1">
+                                        <div class="gen-movie-contain">
+                                            <div class="gen-movie-img">
+                                                <img :src="search.show.image.original" alt="streamlab-image">
+                                                <div class="gen-movie-add">
+                                                    <div class="wpulike wpulike-heart">
+                                                        <div class="wp_ulike_general_class wp_ulike_is_not_liked">
+                                                            <button type="button" class="wp_ulike_btn wp_ulike_put_image"></button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="movie-actions--link_add-to-playlist dropdown">
+                                                        <a class="dropdown-toggle" href="#" data-toggle="dropdown">
+                                                            <i class="fa fa-plus"></i></a>
+                                                    </div>
+                                                </div>
+                                                <div class="gen-movie-action">
+                                                    <a href="single-tv-shows.html" class="gen-button">
+                                                        <i class="fa fa-play"></i>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="gen-info-contain">
+                                                <div class="gen-movie-info">
+                                                    <h3><a href="" @click.prevent="$router.push({ name: 'show_details', params: { id: search.show.id } })" >{{search.show.name}}</a></h3>
+                                                </div>
+                                                <div class="gen-movie-meta-holder">
+                                                    <ul>
+                                                        <li>
+                                                            <a href=""><span>{{search.show.genres}}</span></a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
+                </div>
+            </div>
+        </section> 
+        <slot/>
     </div> 
 </template>
 <style scoped>
+    .gen-movie-img img {
+         width:300px !important
+    }
 
 </style>
+
+
+ <script>
+
+export default {
+  name: 'myStore',
+  data () {
+    return {
+      keyword: '',
+      result: null,
+
+    }
+  },
+  watch: {
+    keyword(value){
+      this.keyword = value; 
+      this.search()
+    } 
+  },
+  computed: {
+    
+  },
+  methods: {
+
+    search() {
+      this.$store.dispatch("getSearch", this.keyword )
+      this.result = this.$store.state.search;
+    }
+
+  },
+    mounted() {
+        this.$store.dispatch("getSearch", this.keyword )
+    }
+}
+</script>
