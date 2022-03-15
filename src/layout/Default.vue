@@ -13,22 +13,7 @@
                                 <div id="gen-menu-contain" class="gen-menu-contain">
                                 <ul id="gen-main-menu" class="navbar-nav ml-auto">
                                     <li class="menu-item active">
-                                        <a href="#" aria-current="page">Home</a>
-                                        <i class="fa fa-chevron-down gen-submenu-icon"></i>
-                                        <ul class="sub-menu">
-                                            <li class="menu-item active">
-                                            <a href="index.html" aria-current="page">Main Home</a>
-                                            </li>
-                                            <li class="menu-item">
-                                            <a href="movies-home.html" aria-current="page">Movies Home</a>
-                                            </li>
-                                            <li class="menu-item">
-                                            <a href="tv-shows-home.html" aria-current="page">Tv Shows Home</a>
-                                            </li>
-                                            <li class="menu-item">
-                                            <a href="video-home.html" aria-current="page">Video Home</a>
-                                            </li>
-                                        </ul>
+                                        <a href="" @click="$router.push('/')" aria-current="page">Home</a>                                      
                                     </li>
                                     <li class="menu-item">
                                         <a href="#">Movies</a>
@@ -99,7 +84,7 @@
             </div>
         </header>
            <!-- Search shows -->
-        <div class="gen-section-padding-3"></div> 
+        <div v-if='keyword' class="gen-section-padding-3"></div> 
         <slot/>
     </div> 
 </template>

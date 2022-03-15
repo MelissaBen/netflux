@@ -22,14 +22,14 @@
                                              </div>
                                        </div>
                                        <div class="gen-movie-action">
-                                             <a  href="" @click.prevent="$router.push({ name: 'show_details', params: { id: search.show.id } })" class="gen-button">
+                                             <a  href="" @click="$router.push({ name: 'show_details', params: { id: search.show.id } })" class="gen-button">
                                                 <i class="fa fa-play"></i>
                                              </a>
                                        </div>
                                     </div>
                                     <div class="gen-info-contain">
                                        <div class="gen-movie-info">
-                                             <h3><a href="" @click.prevent="$router.push({ name: 'show_details', params: { id: search.show.id } })" >{{search.show.name}}</a></h3>
+                                             <h3><a href="" @click="$router.push({ name: 'show_details', params: { id: search.show.id } })" >{{search.show.name}}</a></h3>
                                        </div>
                                        <div class="gen-movie-meta-holder">
                                              <ul>
@@ -42,12 +42,12 @@
                                  </div>
                            </div>
                         </div>
-                     </div>
+                    </div>
                </div>
             </div> 
          </div>
       </div>
-    <div class="container">
+    <section class="container">
       <div class="gen-section-caroussel">
           <div class="row">
             <div class="col-xl-6 col-lg-6 col-md-6">
@@ -81,21 +81,21 @@
                               </div>
                           </div>
                           <div class="gen-movie-action">
-                              <a href="" @click.prevent="$router.push({ name: 'show_details', params: { id: show.id } })" class="gen-button">
+                              <a href="" @click="$router.push({ name: 'show_details', params: { id: show.id } })" class="gen-button">
                                 <i class="fa fa-play"></i>
                               </a>
                           </div>
                         </div>
                         <div class="gen-info-contain">
                           <div class="gen-movie-info">
-                              <h3><a href="" @click.prevent="$router.push({ name: 'show_details', params: { id: show.id } })" >{{show.name}}</a>
+                              <h3><a href="" @click="$router.push({ name: 'show_details', params: { id: show.id } })" >{{show.name}}</a>
                               </h3>
                           </div>
                           <div class="gen-movie-meta-holder">
                               <ul>
                                 <li>2hr 00mins</li>
                                 <li>
-                                    <a href="action.html"><span>{{show.genres}}</span></a>
+                                    <a href=""><span>{{show.genres.join(', ')}}</span></a>
                                 </li>
                               </ul>
                           </div>
@@ -148,14 +148,14 @@
                         </div>
                         <div class="gen-info-contain">
                           <div class="gen-movie-info">
-                              <h3><a href="" @click.prevent="$router.push({ name: 'show_details', params: { id: show.id } })" >{{show.name}}</a>
+                              <h3><a href="" @click="$router.push({ name: 'show_details', params: { id: show.id } })" >{{show.name}}</a>
                               </h3>
                           </div>
                           <div class="gen-movie-meta-holder">
                               <ul>
                                 <li>2hr 00mins</li>
                                 <li>
-                                    <a href="action.html"><span>{{show.genres}}</span></a>
+                                    <a href=""><span>{{show.genres.join(', ')}}</span></a>
                                 </li>
                               </ul>
                           </div>
@@ -216,7 +216,7 @@
                               <ul>
                                 <li>2hr 00mins</li>
                                 <li>
-                                    <a href="action.html"><span>{{show.genres}}</span></a>
+                                    <a href=""><span>{{show.genres.join(', ')}}</span></a>
                                 </li>
                               </ul>
                           </div>
@@ -229,7 +229,7 @@
           <navigation />
         </template>
       </carousel> 
-    </div>
+    </section>
   </div>
 </template>
 
@@ -288,7 +288,13 @@ export default {
     width: 400px;
     height: 400px;
 
-}
+  }
+  .gen-movie-img img {
+        width:300px !important
+  }
+  .search {
+      padding-top: 60px ;
+  }
 
 @media (max-width: 700px) { 
   .carousel__slide {
