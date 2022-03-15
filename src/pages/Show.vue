@@ -14,7 +14,7 @@
                     <img
                       v-if="show"
                       class="showe"
-                      :src="show.image.medium"
+                      :src="show.image  ? show.image.medium : '/src/images/default_image.png'"
                       alt="stream-lab-image"
                     />
                   </div>
@@ -71,8 +71,8 @@
                 v-for="(season, key) in saisons"
                 :key="key"
                 :id="'season_' + key"
-                :class="{ active: key == 1 }"
                 class="tab-pane show"
+                :class="{ 'active': key == 1 }"
               >
                 <div v-for="ep in season" :key="ep.id" class="epi-season">
                   <div
@@ -100,7 +100,8 @@
                             alt="stream-lab-image"
                           />
                           <div class="gen-movie-action">
-                            <a href="tv-shows-home.html" class="gen-button">
+                            <a href=""
+                                  @click="$router.push({ name: 'single_episode', params: { id: ep.id }})" class="gen-button">
                               <i class="fa fa-play"></i>
                             </a>
                           </div>
@@ -146,25 +147,25 @@
       </div>
     </section>
     <div class="m-auto">
-      <form @submit="submitComment">
+      <form @submit="addNewComment">
         <div class="row gt-form">
           <div class="col-md-9 mb-4">
             <input
               type="text"
-              v-model="form.username"
+              v-model="username"
               name="username"
               placeholder="Username"
             />
           </div>
           <div class="col-md-9 mb-4">
             <textarea
-              v-model="form.content"
+              v-model="content"
               name="content"
               placeholder="Content"
             ></textarea>
           </div>
           <div class="col-md-9 mb-4">
-            <button class="btn btn-outline-success" type="submit">
+            <button class="btn btn-outline" type="submit">
               Commenter
             </button>
           </div>
@@ -193,58 +194,50 @@
 
 <script>
 import _ from "lodash";
+import { computed, onMounted, ref } from "vue";
+import { useStore } from "vuex";
+import { useRoute } from 'vue-router';
 
 export default {
   name: "Show",
-  components: { },
+  setup() {
+    const store = useStore()
+    const route = useRoute()
 
-  data() {
+    onMounted(() => {
+      store.dispatch("getSingleShow", route.params.id);
+      store.dispatch("getSingleShowSaisons", route.params.id);
+      store.dispatch("getSingleShowEpisodes", route.params.id);
+      store.dispatch("getSingleShowComments", route.params.id);
+    });
+
+    const id_show = route.params.id
+
+    const username = ref("");
+    const content = ref("");
+
+    const addNewComment = e => {
+      e.preventDefault()
+      store.dispatch("addComment", {
+        username: username.value,
+        content: content.value,
+        showId: id_show,
+      });
+      store.dispatch("getSingleShowComments", id_show);
+      username.value = "";
+      content.value = "";
+    }
+
     return {
-      form: {
-        username: "",
-        content: "",
-        showId: null,
-      },
-      id: null,
-      comments: null,
+      username,
+      content,
+      show: computed(() => store.state.show),
+      saisons: computed(() => _.groupBy(store.state.episodes, "season")),
+      episodes: computed(() => store.state.episodes),
+      comments: computed(() => store.state.comments),
+      addNewComment,
     };
-  },
-  computed: {
-    show() {
-      return this.$store.state.show;
-    },
-
-    saisons() {
-      return _.groupBy(this.$store.state.episodes, "season");
-    },
-
-    episodes() {
-      return this.$store.state.episodes;
-    },
-    comments() {
-      return this.$store.state.comments;
-    },
-  },
-  methods: {
-    getshow() {
-      this.$store.dispatch("getSingleShow", this.id);
-      this.$store.dispatch("getSingleShowSaisons", this.id);
-      this.$store.dispatch("getSingleShowEpisodes", this.id);
-      this.$store.dispatch("getSingleShowComments", this.id);
-    },
-    submitComment(e) {
-      e.preventDefault();
-      this.form.showId = this.id;
-      this.$store.dispatch("addComment", this.form)
-      this.$store.dispatch("getSingleShowComments", this.id);
-      this.form.username = "";
-      this.form.content = "";
-    },
-  },
-  mounted() {
-    this.id = this.$route.params.id;
-    this.getshow();
-  },
+  }
 };
 </script>
 <style scoped>
