@@ -1,20 +1,27 @@
-# Vue 3 Starter Project
+# Netflux project - vue 3 - ecv - M2-dev
 
-Vue 3 has been out for some time now and many people, including me, are eager to know what has changed and how to create project with it
+# Team MAT :)
+
+- Melissa Benmeziane
+- Abdoul zakari
+- Takwa Belghit
 
 ## How to start
 
-```bash
 # npm
+
 npm install
 npm run dev
 
 # yarn
+
 yarn
 yarn dev
 
 # json server
+
 json-server -p 4000 db.json
+
 ```
 
 This will start a Vite server on local that you can play with.
@@ -24,3 +31,4 @@ This will start a Vite server on local that you can play with.
 ### [Vite](https://vitejs.dev/)
 
 The build tool
+```
