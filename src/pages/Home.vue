@@ -42,12 +42,12 @@
                                  </div>
                            </div>
                         </div>
-                     </div>
+                    </div>
                </div>
             </div> 
          </div>
       </div>
-    <div class="container">
+    <section class="container">
       <div class="gen-section-caroussel">
           <div class="row">
             <div class="col-xl-6 col-lg-6 col-md-6">
@@ -95,7 +95,7 @@
                               <ul>
                                 <li>2hr 00mins</li>
                                 <li>
-                                    <a href="action.html"><span>{{show.genres.join(', ')}}</span></a>
+                                    <a href=""><span>{{show.genres.join(', ')}}</span></a>
                                 </li>
                               </ul>
                           </div>
@@ -155,7 +155,7 @@
                               <ul>
                                 <li>2hr 00mins</li>
                                 <li>
-                                    <a href="action.html"><span>{{show.genres.join(', ')}}}</span></a>
+                                    <a href=""><span>{{show.genres.join(', ')}}</span></a>
                                 </li>
                               </ul>
                           </div>
@@ -216,7 +216,7 @@
                               <ul>
                                 <li>2hr 00mins</li>
                                 <li>
-                                    <a href="action.html"><span>{{show.genres.join(', ')}}</span></a>
+                                    <a href=""><span>{{show.genres.join(', ')}}</span></a>
                                 </li>
                               </ul>
                           </div>
@@ -229,7 +229,7 @@
           <navigation />
         </template>
       </carousel> 
-    </div>
+    </section>
   </div>
 </template>
 

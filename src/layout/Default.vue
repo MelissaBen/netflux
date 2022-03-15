@@ -84,7 +84,7 @@
             </div>
         </header>
            <!-- Search shows -->
-        <div class="gen-section-padding-3"></div> 
+        <div v-if='keyword' class="gen-section-padding-3"></div> 
         <slot/>
     </div> 
 </template>

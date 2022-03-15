@@ -7,19 +7,19 @@
       <div class="container">
         <div class="col-lg-12">
           <div class="gen-tv-show-wrapper style-1">
-            <div class="gen-tv-show-top">
-              <div class="row">
-                <div class="col-lg-6">
+            <div class="show-top">
+              <div class="row show-container">
+                <div class="col-lg-4'">
                   <div class="gentech-tv-show-img-holder">
                     <img
                       v-if="show"
-                      class="showe"
+                      class="show-img"
                       :src="show.image.medium"
                       alt="stream-lab-image"
                     />
                   </div>
                 </div>
-                <div class="col-lg-6 align-self-center">
+                <div class="col-lg-8 align-self-center">
                   <div class="gen-single-tv-show-info">
                     <h2 v-if="show" class="gen-title">{{ show.name }}</h2>
                     <div class="gen-single-meta-holder">
@@ -145,7 +145,7 @@
         </div>
       </div>
     </section>
-    <div class="m-auto">
+    <div class="mx-5">
       <form @submit="submitComment">
         <div class="row gt-form">
           <div class="col-md-9 mb-4">
@@ -171,7 +171,7 @@
         </div>
       </form>
     </div>
-    <div class="widget widget_recent_comments">
+    <div class="widget widget_recent_comments p-5">
       <h2 class="widget-title">Commentaires :</h2>
       <ul id="recentcomments">
         <li
@@ -253,9 +253,14 @@ export default {
 };
 </script>
 <style scoped>
-.showe {
-  width: 100%;
+.show-img {
+  width: 400px;
   height: 400px;
+}
+
+.show-container {
+  justify-content: space-between;
+  padding-left: 50px;
 }
 .site {
   --white-color: red;
@@ -279,5 +284,9 @@ export default {
 }
 .ep-season {
   color: white;
+}
+
+.show-top{
+  margin: 90px 0 20px 0;
 }
 </style>
