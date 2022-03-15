@@ -11,14 +11,6 @@ const state = {
     comments: null,
 };
 
-//to handle state
-/*const getters = {
-  getShows(state) {
-    console.log(state.shows);
-    return state.shows;
-  }
-}*/
-
 const mutations = {
     incrementCounter(state) {
         state.storeCounter++;
@@ -57,7 +49,6 @@ const actions = {
     getSearch({ commit }, keyword) {
         axios.get('/search/shows?q=' + keyword)
             .then(response => {
-                console.log(response.data)
                 commit('SET_Search', response.data)
             })
     },
@@ -79,7 +70,6 @@ const actions = {
     getSingleShowEpisodes({ commit }, id) {
         axios.get('/shows/' + id + '/episodes')
             .then(response => {
-                console.log('episodes =>', response.data)
                 commit('SET_SHOW_EPISODES', response.data)
             })
     },
@@ -97,10 +87,8 @@ const actions = {
             })
     },
     addComment(id, form) {
-        console.log(form)
         axios.post('http://localhost:4000/comments', form)
             .then(response => {
-                console.log(response)
             })
     },
 
@@ -111,5 +99,4 @@ export const store = {
     state,
     mutations,
     actions,
-    //getters
 };

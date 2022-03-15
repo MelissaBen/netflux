@@ -231,7 +231,6 @@ export default {
       this.$store.dispatch("getSingleShowSaisons", this.id);
       this.$store.dispatch("getSingleShowEpisodes", this.id);
       this.$store.dispatch("getSingleShowComments", this.id);
-      console.log("episodes =>", this.$store.state.saisons);
       this.comments = this.$store.state.comments;
     },
     submitComment(e) {
