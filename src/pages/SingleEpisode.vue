@@ -110,24 +110,26 @@
 
 <script>
 
+import { computed, onMounted } from "vue";
+import { useStore } from "vuex";
+import { useRoute } from 'vue-router';
+
 export default {
   name: "SingleEpisode",
-  components: { },
+  setup() {
+    const store = useStore()
+    const route = useRoute()
 
-  computed: {
-    episode() {
-      return this.$store.state.episode;
-    },
-  },
-  methods: {
-    getSingleEpisode() {
-      this.$store.dispatch("getSingleEpisode", this.$route.params.id);
-    },
-  },
-  mounted() {
-    this.getSingleEpisode();
-  },
+    onMounted(() => {
+      store.dispatch("getSingleEpisode", route.params.id)
+    });
+
+    return {
+      episode: computed(() => store.state.episode),
+    };
+  }
 };
+
 </script>
 <style scoped>
 img {

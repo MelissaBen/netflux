@@ -1,6 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Home from "./pages/Home.vue";
-import shows from "./pages/Shows.vue";
 import show from "./pages/Show.vue";
 import episode from "./pages/SingleEpisode.vue";
 
@@ -11,12 +10,6 @@ export const router = createRouter({
             name: "home",
             meta: { layout: 'default' },
             component: Home,
-        },
-        {
-            path: "/shows",
-            name: "shows",
-            meta: { layout: 'default' },
-            component: shows,
         },
 
         {

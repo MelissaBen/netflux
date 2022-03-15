@@ -9,7 +9,7 @@
                            <div class="gen-carousel-movies-style-1 movie-grid style-1">
                                  <div class="gen-movie-contain">
                                     <div class="gen-movie-img">
-                                       <img :src="search.show.image.original" alt="streamlab-image">
+                                       <img :src="search.show.image ? search.show.image.original : '/src/images/default_image.png'" alt="streamlab-image">
                                        <div class="gen-movie-add">
                                              <div class="wpulike wpulike-heart">
                                                 <div class="wp_ulike_general_class wp_ulike_is_not_liked">
