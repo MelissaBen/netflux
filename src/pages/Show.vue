@@ -113,7 +113,7 @@
                         </div>
                         <div class="gen-info-contain">
                           <div class="gen-episode-info">
-                            <h3>
+                            <h3 class="titleep">
                               {{ ep.name }} <span>-</span>
                               <a href="#">
                                 Episode: {{ ep.number }} season
@@ -296,5 +296,10 @@ export default {
 .widget_recent_comments {
   margin-left: 200px;
   height: 100%;
+}
+.titleep {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 </style>
