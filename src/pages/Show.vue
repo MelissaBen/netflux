@@ -14,7 +14,11 @@
                     <img
                       v-if="show"
                       class="showe"
-                      :src="show.image  ? show.image.medium : '/src/images/default_image.png'"
+                      :src="
+                        show.image
+                          ? show.image.medium
+                          : '/src/images/default_image.png'
+                      "
                       alt="stream-lab-image"
                     />
                   </div>
@@ -50,16 +54,12 @@
           </div>
           <div class="gen-season-holder">
             <ul class="nav">
-              <li
-                v-for="(season, key) in saisons"
-                :key="key"
-                :class="{ active: key == 1 }"
-                class="nav-item"
-              >
+              <li v-for="(season, key) in saisons" :key="key" class="nav-item">
                 <a
                   v-if="season"
                   class="nav-link show"
                   data-toggle="tab"
+                  :class="{ active: key == 1 }"
                   :href="'#season_' + key"
                   >Season{{ key }}</a
                 >
@@ -72,7 +72,7 @@
                 :key="key"
                 :id="'season_' + key"
                 class="tab-pane show"
-                :class="{ 'active': key == 1 }"
+                :class="{ active: key == 1 }"
               >
                 <div v-for="ep in season" :key="ep.id" class="epi-season">
                   <div
@@ -100,8 +100,16 @@
                             alt="stream-lab-image"
                           />
                           <div class="gen-movie-action">
-                            <a href=""
-                                  @click="$router.push({ name: 'single_episode', params: { id: ep.id }})" class="gen-button">
+                            <a
+                              href=""
+                              @click="
+                                $router.push({
+                                  name: 'single_episode',
+                                  params: { id: ep.id },
+                                })
+                              "
+                              class="gen-button"
+                            >
                               <i class="fa fa-play"></i>
                             </a>
                           </div>
@@ -165,9 +173,7 @@
             ></textarea>
           </div>
           <div class="col-md-9 mb-4">
-            <button class="btn btn-outline" type="submit">
-              Commenter
-            </button>
+            <button class="btn btn-outline" type="submit">Commenter</button>
           </div>
         </div>
       </form>
@@ -196,13 +202,13 @@
 import _ from "lodash";
 import { computed, onMounted, ref } from "vue";
 import { useStore } from "vuex";
-import { useRoute } from 'vue-router';
+import { useRoute } from "vue-router";
 
 export default {
   name: "Show",
   setup() {
-    const store = useStore()
-    const route = useRoute()
+    const store = useStore();
+    const route = useRoute();
 
     onMounted(() => {
       store.dispatch("getSingleShow", route.params.id);
@@ -211,12 +217,12 @@ export default {
       store.dispatch("getSingleShowComments", route.params.id);
     });
 
-    const id_show = route.params.id
+    const id_show = route.params.id;
     const username = ref("");
     const content = ref("");
 
-    const addNewComment = e => {
-      e.preventDefault()
+    const addNewComment = (e) => {
+      e.preventDefault();
       store.dispatch("addComment", {
         username: username.value,
         content: content.value,
@@ -225,7 +231,7 @@ export default {
       store.dispatch("getSingleShowComments", id_show);
       username.value = "";
       content.value = "";
-    }
+    };
 
     return {
       username,
@@ -236,7 +242,7 @@ export default {
       comments: computed(() => store.state.comments),
       addNewComment,
     };
-  }
+  },
 };
 </script>
 <style scoped>
@@ -273,7 +279,7 @@ export default {
   color: white;
 }
 
-.show-top{
+.show-top {
   margin: 90px 0 20px 0;
 }
 </style>
