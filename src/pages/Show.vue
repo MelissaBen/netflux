@@ -295,5 +295,6 @@ export default {
 }
 .widget_recent_comments {
   margin-left: 200px;
+  height: 100%;
 }
 </style>
