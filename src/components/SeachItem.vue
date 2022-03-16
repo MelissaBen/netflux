@@ -27,7 +27,7 @@
             <div class="gen-movie-meta-holder">
                     <ul>
                     <li>
-                        <a href=""><span>{{search.show.genres}}</span></a>
+                        <a href=""><span>{{search.show.genres.join(', ')}}</span></a>
                     </li>
                     </ul>
             </div>
