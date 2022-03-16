@@ -6,7 +6,7 @@
                     <div class="row">
                     <div class="col-lg-12">
                         <nav class="navbar navbar-expand-lg navbar-light">
-                            <a class="navbar-brand" @click.prevent="$router.push('/')">
+                            <a class="navbar-brand" @click="$router.push('/')">
                                 <img class="img-fluid logo" src="/src/images/Netflux.png" alt="streamlab-image">
                             </a>
                             <div class="collapse navbar-collapse" id="navbarSupportedContent">
