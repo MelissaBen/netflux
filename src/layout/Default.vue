@@ -105,21 +105,13 @@ export default {
     const store = useStore()
     const router = useRouter()
     const keyword = ref("")
-    const toggler = ref(false)
 
     watch(keyword, (value) => {
       store.dispatch("getSearch", value);
       router.push("/");
     });
 
-    const searchToggler = e => {
-      e.preventDefault()
-      toggler.value = toggler.value ? false : true
-    }
-
     return {
-      searchToggler,
-      toggler,
       keyword,
     };
   }

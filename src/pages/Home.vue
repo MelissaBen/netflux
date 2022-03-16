@@ -1,274 +1,18 @@
 <template>
   <div>
-      <div v-if="searches" class="container">
-         <div class="row">
-            <div class="col-lg-12">
-               <div class="gen-style-1">
-                     <div class="row pt-5">
-                        <div class="col-xl-3 col-lg-4 col-md-6"  v-for='search in searches' :key='search.show.id'>
-                           <div class="gen-carousel-movies-style-1 movie-grid style-1">
-                                 <div class="gen-movie-contain">
-                                    <div class="gen-movie-img">
-                                       <img :src="search.show.image ? search.show.image.original : '/src/images/default_image.png'" alt="streamlab-image">
-                                       <div class="gen-movie-add">
-                                             <div class="wpulike wpulike-heart">
-                                                <div class="wp_ulike_general_class wp_ulike_is_not_liked">
-                                                   <button type="button" class="wp_ulike_btn wp_ulike_put_image"></button>
-                                                </div>
-                                             </div>
-                                             <div class="movie-actions--link_add-to-playlist dropdown">
-                                                <a class="dropdown-toggle" href="#" data-toggle="dropdown">
-                                                   <i class="fa fa-plus"></i></a>
-                                             </div>
-                                       </div>
-                                       <div class="gen-movie-action">
-                                             <a  href="" @click="$router.push({ name: 'show_details', params: { id: search.show.id } })" class="gen-button">
-                                                <i class="fa fa-play"></i>
-                                             </a>
-                                       </div>
-                                    </div>
-                                    <div class="gen-info-contain">
-                                       <div class="gen-movie-info">
-                                             <h3><a href="" @click="$router.push({ name: 'show_details', params: { id: search.show.id } })" >{{search.show.name}}</a></h3>
-                                       </div>
-                                       <div class="gen-movie-meta-holder">
-                                             <ul>
-                                                <li>
-                                                   <a href=""><span>{{search.show.genres}}</span></a>
-                                                </li>
-                                             </ul>
-                                       </div>
-                                    </div>
-                                 </div>
-                           </div>
-                        </div>
-                    </div>
-               </div>
-            </div> 
-         </div>
-      </div>
+    <SeachResult v-if="searches" :searches="searches" />
     <section class="container">
-      <div class="gen-section-caroussel">
-          <div class="row">
-            <div class="col-xl-6 col-lg-6 col-md-6">
-                <h4 class="gen-heading-title">All</h4>
-            </div>
-            <div class="col-xl-6 col-lg-6 col-md-6 d-none d-md-inline-block">
-                <div class="gen-movie-action">
-                  <div class="gen-btn-container text-right">
-                      <a href="#" class="gen-button gen-button-flat">
-                        <span class="text">More Videos</span>
-                      </a>
-                  </div>
-                </div>
-            </div>
-          </div>
-      </div>
-      <carousel :items-to-show="1.5" class="caroussel-Container">
-        <slide v-for='show in shows' :key='show.name'>
-            <div class="carousel__item" > 
-                <div class="gen-carousel-movies-style-2 movie-grid style-2">
-                    <div class="gen-movie-contain">
-                        <div class="gen-movie-img"  >
-                          <div class="img-caroussel">
-                          <img :src="show.image.original" alt="owl-carousel-video-image">
-                          </div>
-                          <div class="gen-movie-add">
-                              <div class="wpulike wpulike-heart">
-                                <div class="wp_ulike_general_class wp_ulike_is_not_liked">
-                                  <button type="button" class="wp_ulike_btn wp_ulike_put_image"></button>
-                                </div>
-                              </div>
-                          </div>
-                          <div class="gen-movie-action">
-                              <a href="" @click="$router.push({ name: 'show_details', params: { id: show.id } })" class="gen-button">
-                                <i class="fa fa-play"></i>
-                              </a>
-                          </div>
-                        </div>
-                        <div class="gen-info-contain">
-                          <div class="gen-movie-info">
-                              <h3><a href="" @click="$router.push({ name: 'show_details', params: { id: show.id } })" >{{show.name}}</a>
-                              </h3>
-                          </div>
-                          <div class="gen-movie-meta-holder">
-                              <ul>
-                                <li>2hr 00mins</li>
-                                <li>
-                                    <a href=""><span>{{show.genres.join(', ')}}</span></a>
-                                </li>
-                              </ul>
-                          </div>
-                        </div>
-                    </div>
-                </div>
-              </div>
-        </slide>
-        <template #addons>
-          <navigation />
-        </template>
-      </carousel>
-      <div class="gen-section-caroussel">
-          <div class="row">
-            <div class="col-xl-6 col-lg-6 col-md-6">
-                <h4 class="gen-heading-title">Horror</h4>
-            </div>
-            <div class="col-xl-6 col-lg-6 col-md-6 d-none d-md-inline-block">
-                <div class="gen-movie-action">
-                  <div class="gen-btn-container text-right">
-                      <a href="#" class="gen-button gen-button-flat">
-                        <span class="text">More Videos</span>
-                      </a>
-                  </div>
-                </div>
-            </div>
-          </div>
-      </div>
-      <carousel :items-to-show="1.5" class="caroussel-Container">
-        <slide v-for='show in shows' :key='show.name'>
-            <div class="carousel__item" > 
-                <div class="gen-carousel-movies-style-2 movie-grid style-2">
-                    <div class="gen-movie-contain">
-                        <div class="gen-movie-img"  >
-                          <div class="img-caroussel">
-                          <img :src="show.image.original" alt="owl-carousel-video-image">
-                          </div>
-                          <div class="gen-movie-add">
-                              <div class="wpulike wpulike-heart">
-                                <div class="wp_ulike_general_class wp_ulike_is_not_liked">
-                                  <button type="button" class="wp_ulike_btn wp_ulike_put_image"></button>
-                                </div>
-                              </div>
-                          </div>
-                          <div class="gen-movie-action">
-                              <a href="single-movie.html" class="gen-button">
-                                <i class="fa fa-play"></i>
-                              </a>
-                          </div>
-                        </div>
-                        <div class="gen-info-contain">
-                          <div class="gen-movie-info">
-                              <h3><a href="" @click="$router.push({ name: 'show_details', params: { id: show.id } })" >{{show.name}}</a>
-                              </h3>
-                          </div>
-                          <div class="gen-movie-meta-holder">
-                              <ul>
-                                <li>2hr 00mins</li>
-                                <li>
-                                    <a href=""><span>{{show.genres.join(', ')}}</span></a>
-                                </li>
-                              </ul>
-                          </div>
-                        </div>
-                    </div>
-                </div>
-              </div>
-        </slide>
-        <template #addons>
-          <navigation />
-        </template>
-      </carousel> 
-      <div class="gen-section-caroussel">
-          <div class="row">
-            <div class="col-xl-6 col-lg-6 col-md-6">
-                <h4 class="gen-heading-title">Action</h4>
-            </div>
-            <div class="col-xl-6 col-lg-6 col-md-6 d-none d-md-inline-block">
-                <div class="gen-movie-action">
-                  <div class="gen-btn-container text-right">
-                      <a href="#" class="gen-button gen-button-flat">
-                        <span class="text">More Videos</span>
-                      </a>
-                  </div>
-                </div>
-            </div>
-          </div>
-      </div>
-      <carousel :items-to-show="1.5" class="caroussel-Container">
-        <slide v-for='show in shows' :key='show.name'>
-            <div class="carousel__item" > 
-                <div class="gen-carousel-movies-style-2 movie-grid style-2">
-                    <div class="gen-movie-contain">
-                        <div class="gen-movie-img"  >
-                          <div class="img-caroussel">
-                          <img :src="show.image.original" alt="owl-carousel-video-image">
-                          </div>
-                          <div class="gen-movie-add">
-                              <div class="wpulike wpulike-heart">
-                                <div class="wp_ulike_general_class wp_ulike_is_not_liked">
-                                  <button type="button" class="wp_ulike_btn wp_ulike_put_image"></button>
-                                </div>
-                              </div>
-                          </div>
-                          <div class="gen-movie-action">
-                              <a href="" @click="$router.push({ name: 'show_details', params: { id: show.id } })" class="gen-button">
-                                <i class="fa fa-play"></i>
-                              </a>
-                          </div>
-                        </div>
-                        <div class="gen-info-contain">
-                          <div class="gen-movie-info">
-                              <h3>
-                                 <a href="" @click="$router.push({ name: 'show_details', params: { id: show.id } })" >{{show.name}}</a>
-                              </h3>
-                          </div>
-                          <div class="gen-movie-meta-holder">
-                              <ul>
-                                <li>2hr 00mins</li>
-                                <li>
-                                    <a href=""><span>{{show.genres.join(', ')}}</span></a>
-                                </li>
-                              </ul>
-                          </div>
-                        </div>
-                    </div>
-                </div>
-              </div>
-        </slide>
-        <template #addons>
-          <navigation />
-        </template>
-      </carousel> 
+
+      <CarouselHeader title="All"/>
+      <item-carousel :shows="shows"></item-carousel>
+
+      <CarouselHeader title="Horror"/>
+      <item-carousel :shows="shows" genre="Horror"></item-carousel>
+
+      <CarouselHeader title="Action"/>
+      <item-carousel :shows="shows" genre="Action"></item-carousel>
+
     </section>
-    <h1>Drama </h1>
-    <div v-for='(show, key) in genres' :key='key'>
-      <div v-if="key.includes('Drama')">
-        {{ key }}
-        {{ show.name }}
-      </div>
-    </div>
-<h1>Science-Fiction </h1>
-    <div v-for='(show, key) in genres' :key='key'>
-      <div v-if="key.includes('Science-Fiction')">
-        {{ key }}
-        {{ show.name }}
-      </div>
-    </div>
-<h1>Action </h1>
-    <div v-for='(show, key) in genres' :key='key'>
-      <div v-if="key.includes('Action')">
-        {{ key }}
-        {{ show.name }}
-      </div>
-    </div>
-<h1>Horror </h1>
-
-    <div v-for='(show, key) in genres' :key='key'>
-      <div v-if="key.includes('Horror')">
-        {{ key }}
-        {{ show.name }}
-      </div>
-    </div>
-
-
-  <h1>Comedy </h1>
-
-    <div v-for='(show, key) in genres' :key='key'>
-      <div v-if="key.includes('Comedy')">
-        {{ key }}
-        {{ show.name }}
-      </div>
-    </div>
 
 
   </div>
@@ -276,18 +20,20 @@
 
 <script>
 import Hero from "../components/Hero.vue";
-import 'vue3-carousel/dist/carousel.css';
-import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel';
+import SeachResult from "../components/SeachResult.vue";
+import CarouselHeader from "../components/CarouselHeader.vue";
 import { useStore } from "vuex";
 import { onMounted, computed } from "vue";
 import _ from "lodash";
+import ItemCarousel from '../components/ItemCarousel.vue';
 
 export default {
   name: 'myStore',
-  components: { Hero,  Carousel,
-    Slide,
-    Pagination,
-    Navigation, 
+  components: { 
+    Hero,  
+    SeachResult,
+    CarouselHeader,
+    ItemCarousel,
   },
 
   setup() {
@@ -300,45 +46,7 @@ export default {
     return {
       searches: computed(() => store.state.search),
       shows: computed(() => store.state.shows),
-      genres : computed(() => _.groupBy(store.state.shows, "genres")),
     };
   }
 }
 </script>
-<style scoped>
-
-  .gen-section-caroussel{
-      padding: 20px 80px;
-  }
-
-  .carousel__prev, .carousel__next {
-      background-color: #e50916 !important;
-  }
-
-  .carousel {
-    padding: 15px 0;
-  }
-  .carousel__slide {
-  
-    width: 30% !important;
-  }
-
-  .img-caroussel {
-    width: 400px;
-    height: 400px;
-
-  }
-  .gen-movie-img img {
-        width:300px !important
-  }
-  .search {
-      padding-top: 60px ;
-  }
-
-@media (max-width: 700px) { 
-  .carousel__slide {
-    width: 100% !important ;
-}
-}
-
-</style>
