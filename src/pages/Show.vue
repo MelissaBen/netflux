@@ -1,9 +1,6 @@
 <template>
   <div class="">
     <section class="position-relative gen-section-padding-3">
-      <div class="tv-single-background">
-        <img src="https://picsum.photos/60/60" alt="stream-lab-image" />
-      </div>
       <div class="container">
         <div class="col-lg-12">
           <div class="gen-tv-show-wrapper style-1">
@@ -155,53 +152,51 @@
 
         <div class="container">
           <div class="row">
-            <div class="col-lg-12">
-              <div>
-                <form id="pms_login" @submit="addNewComment">
-                  <h4>Comment</h4>
-                  <p class="login-username">
-                    <label for="user_login">Username</label>
-                    <input
-                      type="text"
-                      v-model="username"
-                      name="username"
-                      placeholder="Username"
-                      class="input"
-                      size="20"
-                    />
-                  </p>
-                  <p class="login-password">
-                    <label for="user_pass">Content</label>
-                    <textarea
-                      v-model="content"
-                      name="content"
-                      id="user_pass"
-                      class="input"
-                      size="20"
-                      placeholder="content"
-                    />
-                  </p>
-                  <div class="col-md-9 mb-4">
-                    <button class="btn btn-outline" type="submit">Send</button>
-                  </div>
-                </form>
-                <div class="widget widget_recent_comments p-5">
-                  <h2 class="widget-title">Commentaire :</h2>
-                  <ul id="recentcomments">
-                    <li
-                      class="recentcomments"
-                      v-for="comment in comments"
-                      :key="comment.id"
-                    >
-                      <span class="comment-author-link">
-                        <a href="#" rel="external nofollow ugc" class="url pl-0"
-                          >{{ comment.username }} :
-                        </a>
-                      </span>
-                      <a href="#" class="pl-0">{{ comment.content }}</a>
-                    </li>
-                  </ul>
+            <div class="commentaire">
+              <form id="pms_login" @submit="addNewComment">
+                <h4>Comment</h4>
+                <p class="login-username">
+                  <label for="user_login">Username</label>
+                  <input
+                    type="text"
+                    v-model="username"
+                    name="username"
+                    placeholder="Username"
+                    class="input"
+                    size="20"
+                  />
+                </p>
+                <p class="login-password">
+                  <label for="user_pass">Content</label>
+                  <textarea
+                    v-model="content"
+                    name="content"
+                    id="user_pass"
+                    class="input"
+                    size="20"
+                    placeholder="content"
+                  />
+                </p>
+                <div class="col-md-9 mb-4">
+                  <button class="btn btn-outline" type="submit">Send</button>
                 </div>
+              </form>
+              <div class="widget widget_recent_comments p-5">
+                <h2 class="widget-title">Commentaire :</h2>
+                <ul id="recentcomments">
+                  <li
+                    class="recentcomments"
+                    v-for="comment in comments"
+                    :key="comment.id"
+                  >
+                    <span class="comment-author-link">
+                      <a href="#" rel="external nofollow ugc" class="url pl-0"
+                        >{{ comment.username }} :
+                      </a>
+                    </span>
+                    <a href="#" class="pl-0">{{ comment.content }}</a>
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
@@ -294,5 +289,11 @@ export default {
 
 .show-top {
   margin: 90px 0 20px 0;
+}
+.commentaire {
+  display: flex;
+}
+.widget_recent_comments {
+  margin-left: 200px;
 }
 </style>
