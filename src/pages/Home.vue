@@ -230,6 +230,47 @@
         </template>
       </carousel> 
     </section>
+    <h1>Drama </h1>
+    <div v-for='(show, key) in genres' :key='key'>
+      <div v-if="key.includes('Drama')">
+        {{ key }}
+        {{ show.name }}
+      </div>
+    </div>
+<h1>Science-Fiction </h1>
+    <div v-for='(show, key) in genres' :key='key'>
+      <div v-if="key.includes('Science-Fiction')">
+        {{ key }}
+        {{ show.name }}
+      </div>
+    </div>
+<h1>Action </h1>
+    <div v-for='(show, key) in genres' :key='key'>
+      <div v-if="key.includes('Action')">
+        {{ key }}
+        {{ show.name }}
+      </div>
+    </div>
+<h1>Horror </h1>
+
+    <div v-for='(show, key) in genres' :key='key'>
+      <div v-if="key.includes('Horror')">
+        {{ key }}
+        {{ show.name }}
+      </div>
+    </div>
+
+
+  <h1>Comedy </h1>
+
+    <div v-for='(show, key) in genres' :key='key'>
+      <div v-if="key.includes('Comedy')">
+        {{ key }}
+        {{ show.name }}
+      </div>
+    </div>
+
+
   </div>
 </template>
 
@@ -237,32 +278,30 @@
 import Hero from "../components/Hero.vue";
 import 'vue3-carousel/dist/carousel.css';
 import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel';
+import { useStore } from "vuex";
+import { onMounted, computed } from "vue";
+import _ from "lodash";
 
 export default {
   name: 'myStore',
   components: { Hero,  Carousel,
     Slide,
     Pagination,
-    Navigation, },   
-
-  data () {
-    return {
-
-    }
+    Navigation, 
   },
-  computed: {
-   searches() {
-      return this.$store.state.search;
-   },
-    shows() {
-      return this.$store.state.shows;
-    },
-  },
-  methods: {
+
+  setup() {
+    const store = useStore()
     
-  },
-  mounted() {
-      this.$store.dispatch("getShowsActions");
+    onMounted(() => {
+      store.dispatch("getShowsActions");
+    });
+
+    return {
+      searches: computed(() => store.state.search),
+      shows: computed(() => store.state.shows),
+      genres : computed(() => _.groupBy(store.state.shows, "genres")),
+    };
   }
 }
 </script>

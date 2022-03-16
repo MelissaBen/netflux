@@ -99,21 +99,39 @@ import { useStore } from "vuex";
 import { watch, ref } from "vue";
 import { useRouter } from "vue-router";
 export default {
-  name: "myStore",
+  name: 'Default',
 
   setup() {
-    const store = useStore();
-    const router = useRouter();
-    const keyword = ref("");
+    const store = useStore()
+    const router = useRouter()
+    const keyword = ref("")
+    const toggler = ref(false)
 
     watch(keyword, (value) => {
       store.dispatch("getSearch", value);
       router.push("/");
     });
 
+    const searchToggler = e => {
+      e.preventDefault()
+      toggler.value = toggler.value ? false : true
+    }
+
     return {
+      searchToggler,
+      toggler,
       keyword,
     };
-  },
-};
+  }
+}
+
 </script>
+
+<style scoped>
+    .gen-form-show {
+        display: block;
+    }
+    .gen-form-hide {
+        display: none;
+    }
+</style>
