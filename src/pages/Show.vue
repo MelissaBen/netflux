@@ -1,9 +1,6 @@
 <template>
   <div class="">
     <section class="position-relative gen-section-padding-3">
-      <div class="tv-single-background">
-        <img src="https://picsum.photos/60/60" alt="stream-lab-image" />
-      </div>
       <div class="container">
         <div class="col-lg-12">
           <div class="gen-tv-show-wrapper style-1">
@@ -14,7 +11,11 @@
                     <img
                       v-if="show"
                       class="showe"
-                      :src="show.image  ? show.image.medium : '/src/images/default_image.png'"
+                      :src="
+                        show.image
+                          ? show.image.medium
+                          : '/src/images/default_image.png'
+                      "
                       alt="stream-lab-image"
                     />
                   </div>
@@ -50,16 +51,12 @@
           </div>
           <div class="gen-season-holder">
             <ul class="nav">
-              <li
-                v-for="(season, key) in saisons"
-                :key="key"
-                :class="{ active: key == 1 }"
-                class="nav-item"
-              >
+              <li v-for="(season, key) in saisons" :key="key" class="nav-item">
                 <a
                   v-if="season"
                   class="nav-link show"
                   data-toggle="tab"
+                  :class="{ active: key == 1 }"
                   :href="'#season_' + key"
                   >Season{{ key }}</a
                 >
@@ -72,7 +69,7 @@
                 :key="key"
                 :id="'season_' + key"
                 class="tab-pane show"
-                :class="{ 'active': key == 1 }"
+                :class="{ active: key == 1 }"
               >
                 <div v-for="ep in season" :key="ep.id" class="epi-season">
                   <div
@@ -100,15 +97,23 @@
                             alt="stream-lab-image"
                           />
                           <div class="gen-movie-action">
-                            <a href=""
-                                  @click="$router.push({ name: 'single_episode', params: { id: ep.id }})" class="gen-button">
+                            <a
+                              href=""
+                              @click="
+                                $router.push({
+                                  name: 'single_episode',
+                                  params: { id: ep.id },
+                                })
+                              "
+                              class="gen-button"
+                            >
                               <i class="fa fa-play"></i>
                             </a>
                           </div>
                         </div>
                         <div class="gen-info-contain">
                           <div class="gen-episode-info">
-                            <h3>
+                            <h3 class="titleep">
                               {{ ep.name }} <span>-</span>
                               <a href="#">
                                 Episode: {{ ep.number }} season
@@ -144,51 +149,60 @@
             </div>
           </div>
         </div>
-      </div>
-    </section>
-    <div class="m-auto">
-      <form @submit="addNewComment">
-        <div class="row gt-form">
-          <div class="col-md-9 mb-4">
-            <input
-              type="text"
-              v-model="username"
-              name="username"
-              placeholder="Username"
-            />
-          </div>
-          <div class="col-md-9 mb-4">
-            <textarea
-              v-model="content"
-              name="content"
-              placeholder="Content"
-            ></textarea>
-          </div>
-          <div class="col-md-9 mb-4">
-            <button class="btn btn-outline" type="submit">
-              Commenter
-            </button>
+
+        <div class="container">
+          <div class="row">
+            <div class="commentaire">
+              <form id="pms_login" @submit="addNewComment">
+                <h4>Comment</h4>
+                <p class="login-username">
+                  <label for="user_login">Username</label>
+                  <input
+                    type="text"
+                    v-model="username"
+                    name="username"
+                    placeholder="Username"
+                    class="input"
+                    size="20"
+                  />
+                </p>
+                <p class="login-password">
+                  <label for="user_pass">Content</label>
+                  <textarea
+                    v-model="content"
+                    name="content"
+                    id="user_pass"
+                    class="input"
+                    size="20"
+                    placeholder="content"
+                  />
+                </p>
+                <div class="col-md-9 mb-4">
+                  <button class="btn btn-outline" type="submit">Send</button>
+                </div>
+              </form>
+              <div class="widget widget_recent_comments p-5">
+                <h2 class="widget-title">Commentaire :</h2>
+                <ul id="recentcomments">
+                  <li
+                    class="recentcomments"
+                    v-for="comment in comments"
+                    :key="comment.id"
+                  >
+                    <span class="comment-author-link">
+                      <a href="#" rel="external nofollow ugc" class="url pl-0"
+                        >{{ comment.username }} :
+                      </a>
+                    </span>
+                    <a href="#" class="pl-0">{{ comment.content }}</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
-      </form>
-    </div>
-    <div class="widget widget_recent_comments p-5">
-      <h2 class="widget-title">Commentaires :</h2>
-      <ul id="recentcomments">
-        <li
-          class="recentcomments"
-          v-for="comment in comments"
-          :key="comment.id"
-        >
-          <span class="comment-author-link">
-            <a href="#" rel="external nofollow ugc" class="url pl-0"
-              >{{ comment.username }} :
-            </a>
-          </span>
-          <a href="#" class="pl-0">{{ comment.content }}</a>
-        </li>
-      </ul>
-    </div>
+      </div>
+    </section>
   </div>
 </template>
 
@@ -196,13 +210,13 @@
 import _ from "lodash";
 import { computed, onMounted, ref } from "vue";
 import { useStore } from "vuex";
-import { useRoute } from 'vue-router';
+import { useRoute } from "vue-router";
 
 export default {
   name: "Show",
   setup() {
-    const store = useStore()
-    const route = useRoute()
+    const store = useStore();
+    const route = useRoute();
 
     onMounted(() => {
       store.dispatch("getSingleShow", route.params.id);
@@ -211,12 +225,12 @@ export default {
       store.dispatch("getSingleShowComments", route.params.id);
     });
 
-    const id_show = route.params.id
+    const id_show = route.params.id;
     const username = ref("");
     const content = ref("");
 
-    const addNewComment = e => {
-      e.preventDefault()
+    const addNewComment = (e) => {
+      e.preventDefault();
       store.dispatch("addComment", {
         username: username.value,
         content: content.value,
@@ -225,7 +239,7 @@ export default {
       store.dispatch("getSingleShowComments", id_show);
       username.value = "";
       content.value = "";
-    }
+    };
 
     return {
       username,
@@ -236,7 +250,7 @@ export default {
       comments: computed(() => store.state.comments),
       addNewComment,
     };
-  }
+  },
 };
 </script>
 <style scoped>
@@ -273,7 +287,19 @@ export default {
   color: white;
 }
 
-.show-top{
+.show-top {
   margin: 90px 0 20px 0;
+}
+.commentaire {
+  display: flex;
+}
+.widget_recent_comments {
+  margin-left: 200px;
+  height: 100%;
+}
+.titleep {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 </style>
