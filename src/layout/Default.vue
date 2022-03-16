@@ -17,50 +17,16 @@
                                     </li>
                                     <li class="menu-item">
                                         <a href="#">Movies</a>
-                                        <i class="fa fa-chevron-down gen-submenu-icon"></i>
-                                        <ul class="sub-menu">
-                                            <li class="menu-item menu-item-has-children">
-                                            <a href="#">Movies List</a>
-                                            <i class="fa fa-chevron-down gen-submenu-icon"></i>
-                                            <ul class="sub-menu">
-                                                <li class="menu-item">
-                                                    <a href="movies-load-more.html">Load More</a>
-                                                </li>
-                                                <li class="menu-item">
-                                                    <a href="movies-infinite-scroll.html">Infinite scroll</a>
-                                                </li>
-                                                <li class="menu-item">
-                                                    <a href="movies-pagination.html">Pagination</a>
-                                                </li>
-                                            </ul>
-                                            </li>
-                                            <li class="menu-item menu-item-has-children">
-                                            <a href="#">Movies Style</a>
-                                            <i class="fa fa-chevron-down gen-submenu-icon"></i>
-                                            <ul class="sub-menu">
-                                                <li class="menu-item">
-                                                    <a href="movies-style-1.html">Style 1</a>
-                                                </li>
-                                                <li class="menu-item">
-                                                    <a href="movies-style-2.html">Style 2</a>
-                                                </li>
-                                                <li class="menu-item">
-                                                    <a href="movies-style-3.html">Style 3</a>
-                                                </li>
-                                            </ul>
-                                            </li>
-                                            <li class="menu-item">
-                                            <a href="single-movie.html">Single Movie</a>
-                                            </li>
-                                        </ul>
                                     </li>
                                 </ul>
                                 </div>
                             </div>
                             <div class="gen-header-info-box">
                                 <div class="gen-menu-search-block">
-                                <a href="javascript:void(0)" id="gen-seacrh-btn"><i class="fa fa-search"></i></a>
-                                <div class="gen-search-form">
+                                <a href="javascript:void(0)" @click="searchToggler" id="gen-seacrh-btn">
+                                    <i class="fa" :class="{ 'fa-times' : toggler , 'fa-search': !toggler}"></i>
+                                </a>
+                                <div class="gen-search-form" :style="{ 'display: block;' : toggler,  'display: none;' : !toggler}" >
                                     <form role="search" method="get" class="search-form" action="#">
                                         <label>
                                             <span class="screen-reader-text"></span>
@@ -104,19 +70,27 @@ import { useStore } from "vuex";
 import { watch, ref } from "vue";
 import { useRouter } from 'vue-router';
 export default {
-  name: 'myStore',
+  name: 'Default',
 
   setup() {
     const store = useStore()
     const router = useRouter()
     const keyword = ref("")
+    const toggler = ref(false)
 
     watch(keyword, (value) => { 
         store.dispatch("getSearch", value )
         router.push('/')
     });
 
+    const searchToggler = e => {
+      e.preventDefault()
+      toggler.value = toggler.value ? false : true
+    }
+
     return {
+      searchToggler,
+      toggler,
       keyword,
     };
   }
@@ -124,3 +98,12 @@ export default {
 
 
 </script>
+
+<style scoped>
+    .gen-form-show {
+        display: block;
+    }
+    .gen-form-hide {
+        display: none;
+    }
+</style>
