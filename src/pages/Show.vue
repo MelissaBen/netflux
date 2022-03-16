@@ -152,49 +152,62 @@
             </div>
           </div>
         </div>
-      </div>
-    </section>
-    <div class="m-auto">
-      <form @submit="addNewComment">
-        <div class="row gt-form">
-          <div class="col-md-9 mb-4">
-            <input
-              type="text"
-              v-model="username"
-              name="username"
-              placeholder="Username"
-            />
-          </div>
-          <div class="col-md-9 mb-4">
-            <textarea
-              v-model="content"
-              name="content"
-              placeholder="Content"
-            ></textarea>
-          </div>
-          <div class="col-md-9 mb-4">
-            <button class="btn btn-outline" type="submit">Commenter</button>
+
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-12">
+              <div>
+                <form id="pms_login" @submit="addNewComment">
+                  <h4>Comment</h4>
+                  <p class="login-username">
+                    <label for="user_login">Username</label>
+                    <input
+                      type="text"
+                      v-model="username"
+                      name="username"
+                      placeholder="Username"
+                      class="input"
+                      size="20"
+                    />
+                  </p>
+                  <p class="login-password">
+                    <label for="user_pass">Content</label>
+                    <textarea
+                      v-model="content"
+                      name="content"
+                      id="user_pass"
+                      class="input"
+                      size="20"
+                      placeholder="content"
+                    />
+                  </p>
+                  <div class="col-md-9 mb-4">
+                    <button class="btn btn-outline" type="submit">Send</button>
+                  </div>
+                </form>
+                <div class="widget widget_recent_comments p-5">
+                  <h2 class="widget-title">Commentaire :</h2>
+                  <ul id="recentcomments">
+                    <li
+                      class="recentcomments"
+                      v-for="comment in comments"
+                      :key="comment.id"
+                    >
+                      <span class="comment-author-link">
+                        <a href="#" rel="external nofollow ugc" class="url pl-0"
+                          >{{ comment.username }} :
+                        </a>
+                      </span>
+                      <a href="#" class="pl-0">{{ comment.content }}</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-      </form>
-    </div>
-    <div class="widget widget_recent_comments p-5">
-      <h2 class="widget-title">Commentaires :</h2>
-      <ul id="recentcomments">
-        <li
-          class="recentcomments"
-          v-for="comment in comments"
-          :key="comment.id"
-        >
-          <span class="comment-author-link">
-            <a href="#" rel="external nofollow ugc" class="url pl-0"
-              >{{ comment.username }} :
-            </a>
-          </span>
-          <a href="#" class="pl-0">{{ comment.content }}</a>
-        </li>
-      </ul>
-    </div>
+      </div>
+    </section>
   </div>
 </template>
 
